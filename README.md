@@ -8,7 +8,7 @@ matplotlib, statsmodels, scipy, pandas, Tensorflow 1.9 or higher (but not 2.X)
 
 ### Training
 
-*Training scripts (including train.py, task.py and network.py) are partly adapted from <a href="https://github.com/gyyang/multitask">Multitask</a> *
+*Training scripts (including train.py, task.py and network.py) are partly adapted from* <a href="https://github.com/gyyang/multitask">Multitask</a> 
 
 We train RNN to learn working memory task (ODR and ODRD) and anti-saccade task (Overlap, Zero-gap, and Gap).
 
