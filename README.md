@@ -3,6 +3,19 @@
 
 matplotlib, statsmodels, scipy, pandas, Tensorflow 1.9 or higher (but not 2.X)
 
+## File Structure
+
+'''
+├─data
+   ├─6tasks
+   │  ├─0
+   │  ├─101120
+   │  ├─10240
+   │  ├─102400
+   │  ├─103680
+   │  ├─104960
+'''
+
 ## Training and Analysis
 
 **Main_training.py** provides the main RNN model used in the paper (add link). Trained models would be saved in *data/6tasks/*
