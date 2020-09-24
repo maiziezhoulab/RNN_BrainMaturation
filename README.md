@@ -4,9 +4,7 @@
 
 matplotlib, statsmodels, scipy, pandas, Tensorflow 1.9 or higher (but not 2.X)
 
-## Training and Analysis
-
-### Training
+## Training
 
 *Training scripts (including train.py, task.py and network.py) are partly adapted from* <a href="https://github.com/gyyang/multitask">Multitask</a> 
 
@@ -18,7 +16,7 @@ We train RNN to learn working memory task (ODR and ODRD) and anti-saccade task (
 
 **Main_training.py** provides the main RNN model used in the paper (add link). Trained models would be saved in *data/6tasks/*
 
-#### File Structure
+### File Structure
 ```
 ├─data
    └─6tasks
@@ -36,10 +34,10 @@ We train RNN to learn working memory task (ODR and ODRD) and anti-saccade task (
       │  └─model.ckpt.meta
       │ ...
 ```
-### Analysis
+## Analysis
 All analysis results of main RNN model in the paper can be reproduced by **Main_analysis.py**. Simply uncommenmt corresponding lines and run the script. 
 
-#### Analysis Function Instruction
+### Analysis Function Instruction
 **print_basic_info** would show you the performance growth curve and other basic information of the model, which can hlep you to decide which rules and trial range to analyze.
 
 **compute_H/gen_task_info** both generate the information of tasks to be analyzed. compute_H would also save the hidden layer response as .pkl files to accelerate subsquent analysis procedure, while gen_task_info only save task information to save up storage. 
