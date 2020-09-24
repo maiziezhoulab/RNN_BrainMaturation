@@ -1,4 +1,8 @@
 # RNN_maturation
+## Dependencies
+
+statsmodels. scipy, pandas, Tensorflow 1.9-15
+
 ## Main Training and Analysis
 
 **Main_training.py** provides the main RNN model used in the paper (add link). Trained models would be saved in *data/6tasks/*
