@@ -1,4 +1,13 @@
 # RNN_maturation
+
+Part of this code is adapted from the <a href="https://github.com/gyyang/multitask">Multitask</a> and <a href="https://github.com/nmasse/Short-term-plasticity-RNN">Short-term-plasticity-RNN</a>.
+
+We train RNN to learn working memory task (ODR and ODRD) and anti-saccade task (Overlap, Zero-gap, and Gap).
+
+<p align="center">
+	<img src="https://github.com/xinzhoucs/RNN_BrainMaturation/blob/master/example/Tasks.jpg"  width="783" height="282">
+</p>
+
 ## Dependencies
 
 matplotlib, statsmodels, scipy, pandas, Tensorflow 1.9 or higher (but not 2.X)
@@ -29,7 +38,9 @@ All analysis results of main RNN model in the paper can be reproduced by **Main_
 **generate_neuron_info** analyzes the neuron selectivity and save it as .pkl files.
 
 **tunning_analysis**  plots neuron tunning feature. (corresponding to Fig.X in paper)
+(PIC)
 
+**
 
 ## More Training and Analysis
 
