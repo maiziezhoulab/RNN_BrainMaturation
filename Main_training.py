@@ -18,7 +18,10 @@ if __name__ == '__main__':
           'learning_rate': 0.001,
           'mix_rule': True,
           'l1_h': 0.,
-          'use_separate_input': False}
+          'use_separate_input': False,
+          'adult_target_perf': 0.95,
+          'young_target_perf': 0.65,
+          'infancy_target_perf': 0.35,}
 
     train(args.modeldir,
         seed=0,
