@@ -1,7 +1,7 @@
 # RNN_maturation
 ## Dependencies
 
-statsmodels, scipy, pandas, Tensorflow 1.9-15
+matplotlib, statsmodels, scipy, pandas, Tensorflow 1.9-15
 
 ## Training and Analysis
 
