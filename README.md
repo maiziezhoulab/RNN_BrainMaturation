@@ -9,11 +9,10 @@ matplotlib, statsmodels, scipy, pandas, Tensorflow 1.9 or higher (but not 2.X)
 ├─data
    ├─6tasks
    │  ├─0
-   │  ├─101120
-   │  ├─10240
-   │  ├─102400
-   │  ├─103680
-   │  ├─104960
+   │  ├─1280
+   │  ├─2560
+   │  ├─3840
+   │  ...
 ```
 
 ## Training and Analysis
