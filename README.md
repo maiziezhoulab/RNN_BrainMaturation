@@ -12,8 +12,12 @@ We train RNN to learn working memory task (ODR and ODRD) and anti-saccade task (
 
 matplotlib, statsmodels, scipy, pandas, Tensorflow 1.9 or higher (but not 2.X)
 
-## File Structure(Temporary)
+## Training and Analysis
 
+### Training
+**Main_training.py** provides the main RNN model used in the paper (add link). Trained models would be saved in *data/6tasks/*
+
+#### File structure
 ```
 ├─data
    ├─6tasks
@@ -23,14 +27,10 @@ matplotlib, statsmodels, scipy, pandas, Tensorflow 1.9 or higher (but not 2.X)
    │  ├─3840
    │  ...
 ```
-
-## Training and Analysis
-
-**Main_training.py** provides the main RNN model used in the paper (add link). Trained models would be saved in *data/6tasks/*
-
+### Analysis
 All analysis results of main RNN model in the paper can be reproduced by **Main_analysis.py**. Simply uncommenmt corresponding lines and run the script. 
 
-### Analysis Function Instruction
+#### Analysis Function Instruction
 **print_basic_info** would show you the performance growth curve and other basic information of the model, which can hlep you to decide which rules and trial range to analyze.
 
 **compute_H/gen_task_info** both generate the information of tasks to be analyzed. compute_H would also save the hidden layer response as .pkl files to accelerate subsquent analysis procedure, while gen_task_info only save task information to save up storage. 
@@ -40,7 +40,8 @@ All analysis results of main RNN model in the paper can be reproduced by **Main_
 **tunning_analysis**  plots neuron tunning feature. (corresponding to Fig.X in paper)
 (PIC)
 
-**
+**plot_PSTH** plots the population activity of responsive RNN units
+(PIC)
 
 ## More Training and Analysis
 
