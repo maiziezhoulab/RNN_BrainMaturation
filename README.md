@@ -5,7 +5,7 @@ matplotlib, statsmodels, scipy, pandas, Tensorflow 1.9 or higher (but not 2.X)
 
 ## File Structure
 
-'''
+```
 ├─data
    ├─6tasks
    │  ├─0
@@ -14,7 +14,7 @@ matplotlib, statsmodels, scipy, pandas, Tensorflow 1.9 or higher (but not 2.X)
    │  ├─102400
    │  ├─103680
    │  ├─104960
-'''
+```
 
 ## Training and Analysis
 
