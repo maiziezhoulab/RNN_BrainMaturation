@@ -1,13 +1,5 @@
 # RNN_maturation
 
-Part of this code is adapted from the <a href="https://github.com/gyyang/multitask">Multitask</a> 
-
-We train RNN to learn working memory task (ODR and ODRD) and anti-saccade task (Overlap, Zero-gap, and Gap).
-
-<p align="center">
-	<img src="https://github.com/xinzhoucs/RNN_BrainMaturation/blob/master/example/Tasks.jpg"  width="783" height="282">
-</p>
-
 ## Dependencies
 
 matplotlib, statsmodels, scipy, pandas, Tensorflow 1.9 or higher (but not 2.X)
@@ -15,6 +7,15 @@ matplotlib, statsmodels, scipy, pandas, Tensorflow 1.9 or higher (but not 2.X)
 ## Training and Analysis
 
 ### Training
+
+*Training scripts (including train.py, task.py and network.py) are partly adapted from <a href="https://github.com/gyyang/multitask">Multitask</a> *
+
+We train RNN to learn working memory task (ODR and ODRD) and anti-saccade task (Overlap, Zero-gap, and Gap).
+
+<p align="center">
+	<img src="https://github.com/xinzhoucs/RNN_BrainMaturation/blob/master/example/Tasks.jpg"  width="783" height="282">
+</p>
+
 **Main_training.py** provides the main RNN model used in the paper (add link). Trained models would be saved in *data/6tasks/*
 
 #### File structure
