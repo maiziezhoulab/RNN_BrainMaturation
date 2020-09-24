@@ -35,7 +35,7 @@ We train RNN to learn working memory task (ODR and ODRD) and anti-saccade task (
       │ ...
 ```
 ## Analysis
-All analysis results of main RNN model in the paper can be reproduced by **Main_analysis.py**. Simply uncommenmt corresponding lines and run the script. 
+*All analysis results of main RNN model in the paper can be reproduced by **Main_analysis.py**. Simply uncommenmt corresponding lines and run the script. *
 
 ### Analysis Function Instruction
 **print_basic_info** would show you the performance growth curve and other basic information of the model, which can hlep you to decide which rules and trial range to analyze.
