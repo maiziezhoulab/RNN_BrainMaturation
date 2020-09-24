@@ -22,8 +22,8 @@ After training, files in /data would be structured as follows:
 ```
 ├─data
    └─6tasks
-      ├─hp.json                       -----> hyperparameters              
-      ├─log.json                      -----> training logs
+      ├─hp.json                       -----> Hyperparameters              
+      ├─log.json                      -----> Training logs
       ├─0
       │  ├─checkpoint                      ┐
       │  ├─model.ckpt.data-00000-of-00001  |
