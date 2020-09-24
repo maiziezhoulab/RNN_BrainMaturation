@@ -24,19 +24,16 @@ We train RNN to learn working memory task (ODR and ODRD) and anti-saccade task (
    └─6tasks
       ├─hp.json
       ├─log.json
-      │
       ├─0
       │  ├─checkpoint
       │  ├─model.ckpt.data-00000-of-00001
       │  ├─model.ckpt.index
       │  └─model.ckpt.meta
-      │
       ├─1280
       │  ├─checkpoint
       │  ├─model.ckpt.data-00000-of-00001
       │  ├─model.ckpt.index
       │  └─model.ckpt.meta
-      │
       │ ...
 ```
 ### Analysis
