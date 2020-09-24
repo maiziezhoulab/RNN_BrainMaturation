@@ -24,6 +24,8 @@ All analysis results of main RNN model in the paper can be reproduced by **Main_
 ### Analysis Function Instruction
 **print_basic_info** would show you the performance growth curve and other basic information of the model, which can hlep you to decide which rules and trial range to analyze.
 
+**compute_H/gen_task_info** both generate the information of tasks to be analyzed. compute_H would also save the hidden layer response as .pkl files to accelerate subsquent analysis procedure, while gen_task_info only save task information to save up storage. 
+
 
 ## More Training and Analysis
 
