@@ -10,7 +10,8 @@ matplotlib, statsmodels, scipy, pandas, Tensorflow 1.9 or higher (but not 2.X)
 All analysis results of main RNN model in the paper can be reproduced by **Main_analysis.py**. Simply uncommenmt corresponding lines and run the script. 
 
 ### Analysis Function Instruction
-**print_basic_info** would show you (and save) the performance growth curve and other basic information of the model.    
+**print_basic_info** would show you the performance growth curve and other basic information of the model, which can hlep you to decide which rules and trial range to analyze.
+
 
 ## More Training and Analysis
 
