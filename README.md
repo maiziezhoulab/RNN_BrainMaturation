@@ -18,15 +18,26 @@ We train RNN to learn working memory task (ODR and ODRD) and anti-saccade task (
 
 **Main_training.py** provides the main RNN model used in the paper (add link). Trained models would be saved in *data/6tasks/*
 
-#### File structure
+#### File Structure
 ```
 ├─data
-   ├─6tasks
-   │  ├─0
-   │  ├─1280
-   │  ├─2560
-   │  ├─3840
-   │  ...
+   └─6tasks
+      ├─hp.json
+      ├─log.json
+      │
+      ├─0
+      │  ├─checkpoint
+      │  ├─model.ckpt.data-00000-of-00001
+      │  ├─model.ckpt.index
+      │  └─model.ckpt.meta
+      │
+      ├─1280
+      │  ├─checkpoint
+      │  ├─model.ckpt.data-00000-of-00001
+      │  ├─model.ckpt.index
+      │  └─model.ckpt.meta
+      │
+      │ ...
 ```
 ### Analysis
 All analysis results of main RNN model in the paper can be reproduced by **Main_analysis.py**. Simply uncommenmt corresponding lines and run the script. 
