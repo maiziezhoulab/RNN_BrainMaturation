@@ -52,9 +52,9 @@ After training, files in /data would be structured as follows:
 **plot_PSTH** plots the population activity of responsive RNN units
 (PIC)
 
-**plot_epoch_mean_growth** 
+**plot_epoch_mean_growth** plots the mean fire rate value change of a specified epoch in a task during training 
 
-**seldir_analysis**
+**seldir_analysis** compares the RNN units' direction selectivity between two epochs from chosen tasks. Blue line represents the number of neurons that selective in both epochs. orange line shows the number of neurons which have same direction selectivity in these epochs, while the green line shows the number of neurons that behave differently on direction selectivity in those two epochs.
 
 **neuron_period_activity_analysis**
 
