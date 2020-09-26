@@ -52,6 +52,20 @@ After training, files in /data would be structured as follows:
 **plot_PSTH** plots the population activity of responsive RNN units
 (PIC)
 
+**plot_epoch_mean_growth** 
+
+**seldir_analysis**
+
+**neuron_period_activity_analysis**
+
+**odrd_distractor_analysis**
+
+**saccade_distribut_analysis**
+
+**sample_neuron_by_trial**
+
+### File Structure
+
 ## More Training and Analysis
 
 **More_training.py** contains a set of trainig examples with different hyperparameters (hp) or trained on different rules. Corresponding analysis code can be found in **More_training_analysis.py**. Please note that due to the difference in analysis procedure, analysis for MoN rules (match_or_non, match_or_non_easy and match_or_non_passive) is written in **MoN_analysis.py**. The training example set for MoN rules is *set5*
