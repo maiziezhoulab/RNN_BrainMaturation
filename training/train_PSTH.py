@@ -44,8 +44,8 @@ def get_default_hp(ruleset):
             # whether rule and stimulus inputs are represented separately
             'use_separate_input': False,
             # Type of loss functions
-            'loss_type': 'lsq',#modified by yichen 'cross_entropy' for one_hot input 
-            # Input_location_type add by yichen
+            'loss_type': 'lsq',  #'cross_entropy' for one_hot input 
+            
             #'in_loc_type': 'one_hot',
             # Optimizer
             'optimizer': 'adam',
@@ -121,7 +121,7 @@ def do_eval(sess, model, log, rule_train):
         rule_train: string or list of strings, the rules being trained
     """
     hp = model.hp
-    rule_grow = dict()# add by yichen
+    rule_grow = dict()
     if not hasattr(rule_train, '__iter__'):
         rule_name_print = rule_train
     else:
@@ -183,7 +183,7 @@ def do_eval(sess, model, log, rule_train):
     perf_tests_min = np.min([log['perf_'+r][-1] for r in rule_tmp])
     log['perf_min'].append(perf_tests_min)
 
-    log['growth'].append(rule_grow)# add by yichen
+    log['growth'].append(rule_grow)
 
     # Saving the model
     model.save(log['model_dir']+'/'+str(log['trials'][-1]))
@@ -318,9 +318,9 @@ def train(model_dir,
             try:
                 # Validation
                 if step % display_step == 0:
-                    trial_number = step * hp['batch_size_train']# add by yichen
+                    trial_number = step * hp['batch_size_train']
                     log['trials'].append(trial_number)
-                    tools.mkdir_p(model_dir+'/'+str(trial_number))# add by yichen
+                    tools.mkdir_p(model_dir+'/'+str(trial_number))
                     log['times'].append(time.time()-t_start)
                     log = do_eval(sess, model, log, hp['rule_trains'])
                     #check if minimum performance is above target 
@@ -359,16 +359,16 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument('--modeldir', type=str, default='../data/6tasks')#add by yichen
+    parser.add_argument('--modeldir', type=str, default='../data/6tasks')
     args = parser.parse_args()
 
     os.environ["CUDA_VISIBLE_DEVICES"] = "0"
     hp = {'activation': 'softplus',
           'n_rnn': 256,
-          'learning_rate': 0.001,#add by yichen #default 0.001
+          'learning_rate': 0.001,  #default 0.001
           'mix_rule': True,
           'l1_h': 0.,
-          'use_separate_input': False}#modified by yichen
+          'use_separate_input': False} 
     train(args.modeldir,
         seed=0,
         hp=hp,
