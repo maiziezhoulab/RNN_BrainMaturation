@@ -78,11 +78,11 @@ def get_default_hp(ruleset):
             # Stopping performance
             'target_perf': 0.95,
             # Adult performance
-            'adult_target_perf': 0.95, #add by yichen
+            'adult_target_perf': 0.95, 
             # Young performance
-            'young_target_perf': 0.65, #add by yichen
+            'young_target_perf': 0.65, 
             # Infancy performance
-            'infancy_target_perf': 0.35, #add by yichen
+            'infancy_target_perf': 0.35, 
             # number of units each ring
             'n_eachring': n_eachring,
             # number of rings
@@ -161,7 +161,7 @@ def do_eval(sess, model, log, rule_train):
               '| c_reg {:0.6f}'.format(np.mean(creg_tmp)) +
               '  | perf {:0.2f}'.format(np.mean(perf_tmp)))
         sys.stdout.flush()
-        # add by yichen=====================================================
+        # ===================== define performance ================================
         if np.mean(perf_tmp) <= hp['infancy_target_perf']:
             rule_grow[rule_test] = '=>I'
         elif np.mean(perf_tmp) <= hp['young_target_perf']:
@@ -170,7 +170,7 @@ def do_eval(sess, model, log, rule_train):
             rule_grow[rule_test] = 'Y=>A'
         else:
             rule_grow[rule_test] = 'Adult'
-        #===================================================================
+        #==========================================================================
 
     # TODO: This needs to be fixed since now rules are strings
     if hasattr(rule_train, '__iter__'):
