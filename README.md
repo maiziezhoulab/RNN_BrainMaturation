@@ -48,11 +48,53 @@ After training, files in /data would be structured as follows:
 
 **compute_H/gen_task_info** both generate the information of tasks to be analyzed. compute_H would also save the hidden layer response as .pkl files to accelerate subsquent analysis procedure, while gen_task_info only save task information to save up storage. 
 
-(FILE STRUCTURE)
+```
+├─data
+   └─6tasks
+      ├─hp.json           
+      ├─log.json
+      ├─task_info.pkl            --->compute_H/gen_task_info
+      ├─0
+      │  ├─H_gap.pkl             ┐
+      │  ├─H_odr.pkl             |
+      │  ├─H_odrd.pkl            |-compute_H
+      │  ├─H_overlap.pkl         |
+      │  ├─H_zero_gap.pkl        ┘
+      │  ├─checkpoint
+      │  ├─model.ckpt.data-00000-of-00001
+      │  ├─model.ckpt.index             
+      │  └─model.ckpt.meta
+      │ ...
+```
 
 **generate_neuron_info** analyzes the neuron selectivity and save it as .pkl files.
 
-(FILE STRUCTURE)
+```
+├─data
+   └─6tasks
+      ├─hp.json           
+      ├─log.json
+      ├─task_info.pkl            --->compute_H/gen_task_info
+      ├─0
+      │  ├─H_gap.pkl             ┐
+      │  ├─H_odr.pkl             |
+      │  ├─H_odrd.pkl            |-compute_H
+      │  ├─H_overlap.pkl         |
+      │  ├─H_zero_gap.pkl        ┘
+      │  ├─checkpoint
+      │  ├─model.ckpt.data-00000-of-00001
+      │  ├─model.ckpt.index             
+      │  ├─model.ckpt.meta
+      │  ├─neuron_info_gap_stim1.pkl      ┐
+      │  ├─neuron_info_odrd_delay1.pkl    |
+      │  ├─neuron_info_odrd_delay2.pkl    |
+      │  ├─neuron_info_odrd_stim1.pkl     |
+      │  ├─neuron_info_odr_delay1.pkl     |-generate_neuron_info
+      │  ├─neuron_info_odr_stim1.pkl      |
+      │  ├─neuron_info_overlap_stim1.pkl  |
+      │  └─neuron_info_zero_gap_stim1.pkl ┘
+      │ ...
+```
 
 **tunning_analysis**  plots neuron tunning feature. (corresponding to Fig.X in paper)
 
