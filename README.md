@@ -92,7 +92,17 @@ After training, files in /data would be structured as follows:
 
 **odrd_distractor_analysis** plots the output/saccade direction distribution of odrd task with different cue-distractor distances at each maturation stage
 
-(Example PIC)
+<p align="center">
+	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/saccade_distribut_analysis_by_growth_dis_0.png"  width="800">
+</p>
+
+<p align="center">
+	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/saccade_distribut_analysis_by_growth_dis_4.png"  width="800">
+</p>
+
+<p align="center">
+	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odrd_distractor_analysis_by_growth.png"  width="800">
+</p>
 
 **sample_neuron_by_trial** generates a set of pictures for each chosen model which describes every responsive unit's direction selectivity by polar map
 
