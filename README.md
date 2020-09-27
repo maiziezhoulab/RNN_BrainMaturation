@@ -42,27 +42,47 @@ After training, files in /data would be structured as follows:
 ### Analysis Function Instruction
 **print_basic_info** would show you the performance growth curve and other basic information of the model, which can hlep you to decide which rules and trial range to analyze.
 
+(Example PIC)
+
 **compute_H/gen_task_info** both generate the information of tasks to be analyzed. compute_H would also save the hidden layer response as .pkl files to accelerate subsquent analysis procedure, while gen_task_info only save task information to save up storage. 
+
+(FILE STRUCTURE)
 
 **generate_neuron_info** analyzes the neuron selectivity and save it as .pkl files.
 
+(FILE STRUCTURE)
+
 **tunning_analysis**  plots neuron tunning feature. (corresponding to Fig.X in paper)
-(PIC)
+
+(Example PIC)
 
 **plot_PSTH** plots the population activity of responsive RNN units (corresponding to Fig.4, Fig.6, Fig.S3 and Fig.S6 in paper)
-(PIC)
+
+(Example PIC)
 
 **plot_epoch_mean_growth** plots the mean fire rate value change of a specified epoch in a task during training 
 
+(Example PIC)
+
 **seldir_analysis** compares the RNN units' direction selectivity between two epochs from chosen tasks. Blue line represents the number of neurons that selective in both epochs. orange line shows the number of neurons which have same direction selectivity in these epochs, while the green line shows the number of neurons that behave differently on direction selectivity in these epochs. (Blue=Orange+Green)
+
+(Example PIC)
 
 **neuron_period_activity_analysis** plots the distribution of the neuron fire rate in a particular time period/epoch at different maturation stages
 
+(Example PIC)
+
 **saccade_distribut_analysis** plots the output/saccade direction distribution of a particular task at each maturation stage
+
+(Example PIC)
 
 **odrd_distractor_analysis** plots the output/saccade direction distribution of odrd task with different cue-distractor distances at each maturation stage
 
+(Example PIC)
+
 **sample_neuron_by_trial** generates a set of pictures for each chosen model which describes every responsive unit's direction selectivity by polar map
+
+(Example PIC)
 
 ### File Structure
 
