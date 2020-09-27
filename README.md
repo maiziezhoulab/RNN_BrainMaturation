@@ -49,7 +49,7 @@ After training, files in /data would be structured as follows:
 **tunning_analysis**  plots neuron tunning feature. (corresponding to Fig.X in paper)
 (PIC)
 
-**plot_PSTH** plots the population activity of responsive RNN units
+**plot_PSTH** plots the population activity of responsive RNN units (corresponding to Fig.4, Fig.6, Fig.S3 and Fig.S6 in paper)
 (PIC)
 
 **plot_epoch_mean_growth** plots the mean fire rate value change of a specified epoch in a task during training 
