@@ -43,7 +43,7 @@ After training, files in /data would be structured as follows:
 **print_basic_info** would show you the performance growth curve and other basic information of the model, which can hlep you to decide which rules and trial range to analyze.
 
 <p align="center">
-	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/growth_of_performance.png"  width="750">
+	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/growth_of_performance.png"  width="800">
 </p>
 
 **compute_H/gen_task_info** both generate the information of tasks to be analyzed. compute_H would also save the hidden layer response as .pkl files to accelerate subsquent analysis procedure, while gen_task_info only save task information to save up storage. 
@@ -57,13 +57,13 @@ After training, files in /data would be structured as follows:
 **tunning_analysis**  plots neuron tunning feature. (corresponding to Fig.X in paper)
 
 <p align="center">
-	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odrd_stim1_(520960%2C%20628480)_step_1280_tuning_analysis.png"  width="750">
+	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odrd_stim1_(520960%2C%20628480)_step_1280_tuning_analysis.png"  width="800">
 </p>
 
 **plot_PSTH** plots the population activity of responsive RNN units (corresponding to Fig.4, Fig.6, Fig.S3 and Fig.S6 in paper)
 
 <p align="center">
-	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odrd_stim1_(520960%2C%20628480)_step_1280_PSTH.png"  width="750">
+	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odrd_stim1_(520960%2C%20628480)_step_1280_PSTH.png"  width="800">
 </p>
 
 **plot_epoch_mean_growth** plots the mean fire rate value change of a specified epoch in a task during training 
