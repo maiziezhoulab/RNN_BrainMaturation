@@ -74,15 +74,21 @@ After training, files in /data would be structured as follows:
 
 **seldir_analysis** compares the RNN units' direction selectivity between two epochs from chosen tasks. Blue line represents the number of neurons that selective in both epochs. orange line shows the number of neurons which have same direction selectivity in these epochs, while the green line shows the number of neurons that behave differently on direction selectivity in these epochs. (Blue=Orange+Green)
 
-(Example PIC)
+<p align="center">
+	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odr_stim1_odrd_stim1exh_neurons_mix_neurons_seldir_analysis.png"  width="800">
+</p>
 
 **neuron_period_activity_analysis** plots the distribution of the neuron fire rate in a particular time period/epoch at different maturation stages
 
-(Example PIC)
+<p align="center">
+	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odrd_delay2_activity_oneway_anova_analysis.png"  width="800">
+</p>
 
 **saccade_distribut_analysis** plots the output/saccade direction distribution of a particular task at each maturation stage
 
-(Example PIC)
+<p align="center">
+	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/saccade_distribut_analysis_by_growth_gap.png"  width="800">
+</p>
 
 **odrd_distractor_analysis** plots the output/saccade direction distribution of odrd task with different cue-distractor distances at each maturation stage
 
