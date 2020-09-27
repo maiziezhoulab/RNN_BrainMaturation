@@ -29,8 +29,8 @@ After training, files in /data would be structured as follows:
       │  ├─model.ckpt.data-00000-of-00001  |
       │  ├─model.ckpt.index                |——Model saved
       │  └─model.ckpt.meta                 ┘
-      ├─1280
-      │  ├─checkpoint
+      ├─1280                          -----> Number of trails trained when saving the model, also noted as "trial number".
+      │  ├─checkpoint                        We use it to distinguish models at different training stage
       │  ├─model.ckpt.data-00000-of-00001
       │  ├─model.ckpt.index
       │  └─model.ckpt.meta
@@ -62,7 +62,7 @@ After training, files in /data would be structured as follows:
 
 **odrd_distractor_analysis** plots the output/saccade direction distribution of odrd task with different cue-distractor distances at each maturation stage
 
-**sample_neuron_by_trial**
+**sample_neuron_by_trial** generates a set of pictures for each chosen model which describe every responsive unit's direction selectivity by polar map
 
 ### File Structure
 
