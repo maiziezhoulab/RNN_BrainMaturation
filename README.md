@@ -84,7 +84,7 @@ After training, files in /data would be structured as follows:
 
 (Example PIC)
 
-### File Structure
+### Figure File Structure
 
 ## More Training and Analysis
 
