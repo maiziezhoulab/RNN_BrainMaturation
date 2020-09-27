@@ -7,7 +7,6 @@ from analysis.PSTH_gen_neuron_info import generate_neuron_info
 
 from analysis.PSTH_tunning_analysis import tunning_analysis
 from analysis.PSTH_gen_PSTH_log import gen_PSTH_log
-from analysis.PSTH_plot_period_ttest import plot_period_ttest_heatmap
 from analysis.PSTH_plot_epoch_mean_growth import plot_epoch_mean_growth
 from analysis.PSTH_seldir_analysis import seldir_analysis
 from analysis.PSTH_plot_PSTH import plot_PSTH
@@ -70,7 +69,6 @@ if __name__ == "__main__":
 
     recompute = args.recompute
     #trial_list = range(start,end+1,step)
-    trial_list = range(0,62720,1280)
 
     print_basic_info(hp,log,model_dir,smooth_growth=True,smooth_window=5)
     #compute_H(hp,log,model_dir,  rules=rules, trial_list=trial_list, recompute=recompute,)
@@ -95,38 +93,28 @@ if __name__ == "__main__":
     #tunning_analysis(hp,log,model_dir,'gap','stim1',range(0,102400+1,1280))
     #tunning_analysis(hp,log,model_dir,'overlap','stim1',range(0,102400+1,1280))
     #tunning_analysis(hp,log,model_dir,'zero_gap','stim1',range(0,102400+1,1280))
+
 #######################################################
     #plot_PSTH(hp, log, model_dir, 'odr', 'stim1', range(520960,628480+1,1280), plot_oppo_dir = False)
     #plot_PSTH(hp, log, model_dir, 'odr', 'delay1', range(520960,628480+1,1280), plot_oppo_dir = False)
     #plot_PSTH(hp, log, model_dir, 'odrd', 'stim1', range(520960,628480+1,1280), plot_oppo_dir = True)
     #plot_PSTH(hp, log, model_dir, 'odrd', 'delay1', range(520960,628480+1,1280), plot_oppo_dir = True)
     #plot_PSTH(hp, log, model_dir, 'odrd', 'delay2', range(520960,628480+1,1280), plot_oppo_dir = True)
+
 ##########################################################################
 ##########################################################################
     #PSTH_log = gen_PSTH_log(hp,trial_list,model_dir,rule = 'odr',seltive_epoch = 'stim1')
-    #plot_period_ttest_heatmap(hp,log, trial_list, model_dir, rule = 'odr', seltive_epoch = 'stim1', analy_epoch = 'stim1',PSTH_log = PSTH_log)
-    #plot_period_ttest_heatmap(hp,log, trial_list, model_dir, rule = 'odr', seltive_epoch = 'stim1', analy_epoch = 'delay1',PSTH_log = PSTH_log)
-
     #plot_epoch_mean_growth(hp,log, trial_list, model_dir, rule = 'odr', seltive_epoch = 'stim1', analy_epoch = 'stim1',PSTH_log = PSTH_log)
     #plot_epoch_mean_growth(hp,log, trial_list, model_dir, rule = 'odr', seltive_epoch = 'stim1', analy_epoch = 'delay1',PSTH_log = PSTH_log)
+
 #######################################################
-    #PSTH_log = gen_PSTH_log(hp,trial_list,model_dir,rule = 'odr',seltive_epoch = 'delay1')
-    #plot_period_ttest_heatmap(hp,log, trial_list, model_dir, rule = 'odr', seltive_epoch = 'delay1', analy_epoch = 'delay1',PSTH_log = PSTH_log)
-    
+    #PSTH_log = gen_PSTH_log(hp,trial_list,model_dir,rule = 'odr',seltive_epoch = 'delay1')    
     #plot_epoch_mean_growth(hp,log, trial_list, model_dir, rule = 'odr', seltive_epoch = 'delay1', analy_epoch = 'delay1',PSTH_log = PSTH_log)
 
 #######################################################
     #PSTH_log = gen_PSTH_log(hp,trial_list,model_dir,rule = 'odrd',seltive_epoch = 'stim1')
-    #plot_period_ttest_heatmap(hp,log, trial_list, model_dir, rule = 'odrd', seltive_epoch = 'stim1', analy_epoch = 'stim1',PSTH_log = PSTH_log)  
-    #plot_period_ttest_heatmap(hp,log, trial_list, model_dir, rule = 'odrd', seltive_epoch = 'stim1', analy_epoch = 'delay2',PSTH_log = PSTH_log)
-
     #plot_epoch_mean_growth(hp,log, trial_list, model_dir, rule = 'odrd', seltive_epoch = 'stim1', analy_epoch = 'stim1',PSTH_log = PSTH_log)
     #plot_epoch_mean_growth(hp,log, trial_list, model_dir, rule = 'odrd', seltive_epoch = 'stim1', analy_epoch = 'delay2',PSTH_log = PSTH_log)
-
-#######################################################
-    #plot_period_ttest_heatmap(hp,log, trial_list, model_dir, rule = 'overlap', seltive_epoch = 'stim1', analy_epoch = 'stim1')
-    #plot_period_ttest_heatmap(hp,log, trial_list, model_dir, rule = 'zero_gap', seltive_epoch = 'stim1', analy_epoch = 'stim1')
-    #plot_period_ttest_heatmap(hp,log, trial_list, model_dir, rule = 'gap', seltive_epoch = 'stim1', analy_epoch = 'stim1')
 
 
 ##########################################################################

@@ -1,4 +1,4 @@
-from training.train_PSTH import train
+from training.train import train
 import os
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"

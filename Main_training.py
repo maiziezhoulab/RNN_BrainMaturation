@@ -1,4 +1,4 @@
-from training.train_PSTH import train
+from training.train import train
 
 if __name__ == '__main__':
     import argparse
@@ -18,10 +18,7 @@ if __name__ == '__main__':
           'learning_rate': 0.001,
           'mix_rule': True,
           'l1_h': 0.,
-          'use_separate_input': False,
-          'adult_target_perf': 0.95,
-          'young_target_perf': 0.65,
-          'infancy_target_perf': 0.35,}
+          'use_separate_input': False}
 
     train(args.modeldir,
         seed=0,
