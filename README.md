@@ -14,7 +14,7 @@ We train RNN to learn working memory task (ODR and ODRD) and anti-saccade task (
 	<img src="https://github.com/xinzhoucs/RNN_BrainMaturation/blob/master/example/Tasks.jpg"  width="783" height="282">
 </p>
 
-**Main_training.py** provides the main RNN model used in the paper (add link). Trained models would be saved in *data/6tasks/*
+**Main_training.py** provides the main RNN model used in the paper. Trained models would be saved in *data/6tasks/*
 
 ### File Structure
 
@@ -40,7 +40,7 @@ After training, files in /data would be structured as follows:
 *All analysis results of main RNN model in the paper can be reproduced by **Main_analysis.py**. Simply uncommenmt corresponding lines and run the script.*
 
 ### Analysis Function Instruction
-**print_basic_info** would show you the performance growth curve and other basic information of the model, which can hlep you to decide which rules and trial range to analyze.
+**print_basic_info** would show you the performance growth curve and other basic information of the model, which can hlep you to decide which rules and trial range to analyze. (corresponding to Fig.S5 in paper)
 
 <p align="center">
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/growth_of_performance.png"  width="800">
@@ -96,7 +96,7 @@ After training, files in /data would be structured as follows:
       │ ...
 ```
 
-**tunning_analysis**  plots neuron tunning feature. (corresponding to Fig.X in paper)
+**tunning_analysis**  plots neuron tunning feature. (corresponding to Fig.5 in paper)
 
 <p align="center">
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odrd_stim1_(520960%2C%20628480)_step_1280_tuning_analysis.png"  width="800">
@@ -108,19 +108,19 @@ After training, files in /data would be structured as follows:
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odrd_stim1_(520960%2C%20628480)_step_1280_PSTH.png"  width="800">
 </p>
 
-**plot_epoch_mean_growth** plots the mean fire rate value change of a specified epoch in a task during training 
+**plot_epoch_mean_growth** plots the mean fire rate value change of a specified epoch in a task during training. (corresponding to Fig.S2 in paper)
 
 <p align="center">
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/delay1_epoch_mean_growth.png"  width="800">
 </p>
 
-**seldir_analysis** compares the RNN units' direction selectivity between two epochs from chosen tasks. Blue line represents the number of neurons that selective in both epochs. orange line shows the number of neurons which have same direction selectivity in these epochs, while the green line shows the number of neurons that behave differently on direction selectivity in these epochs. (Blue=Orange+Green)
+**seldir_analysis** compares the RNN units' direction selectivity between two epochs from chosen tasks. Blue line represents the number of neurons that selective in both epochs. orange line shows the number of neurons which have same direction selectivity in these epochs, while the green line shows the number of neurons that behave differently on direction selectivity in these epochs. (Blue=Orange+Green) (corresponding to Fig.S4 in paper)
 
 <p align="center">
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odr_stim1_odrd_stim1exh_neurons_mix_neurons_seldir_analysis.png"  width="800">
 </p>
 
-**neuron_period_activity_analysis** plots the distribution of the neuron fire rate in a particular time period/epoch at different maturation stages
+**neuron_period_activity_analysis** plots the distribution of the neuron fire rate in a particular time period/epoch at different maturation stages. (corresponding to Fig.S1 in paper)
 
 <p align="center">
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odrd_delay2_activity_oneway_anova_analysis.png"  width="800">
@@ -146,7 +146,7 @@ After training, files in /data would be structured as follows:
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odrd_distractor_analysis_by_growth.png"  width="800">
 </p>
 
-**sample_neuron_by_trial** generates a set of pictures for each chosen model which describes every responsive unit's direction selectivity by polar map
+**sample_neuron_by_trial** generates a set of pictures for each chosen model which describes every responsive unit's direction selectivity by polar map. (corresponding to Fig.3 in paper)
 
 <p align="center">
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/115.png"  width="800">
