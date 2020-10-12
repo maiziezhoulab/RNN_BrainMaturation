@@ -1,4 +1,4 @@
-# RNN_maturation
+# RNN_BrainMaturation
 
 ## Dependencies
 
