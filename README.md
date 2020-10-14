@@ -1,9 +1,10 @@
 # RNN_BrainMaturation
 
 ## Dependencies
-
 matplotlib, statsmodels, scipy, pandas, Tensorflow 1.9 or higher (but not 2.X)
+
 ## Colab
+
 
 ## Training
 
@@ -15,11 +16,11 @@ We train RNNs to learn working memory tasks (ODR and ODRD) and anti-saccade task
 	<img src="https://github.com/xinzhoucs/RNN_BrainMaturation/blob/master/example/Tasks.jpg"  width="783" height="282">
 </p>
 
-**Main_training.py** provides the main RNN models used in the paper. Trained models will be saved in *data/6tasks/*
+**Main_training.py** provides the main RNN models used in the paper, and trained models will be saved in *data/6tasks/*
 
 ### File Structure
 
-After training, files in /data would be structured as follows:
+After training, files in */data* would be structured as follows:
 ```
 ├─data
    └─6tasks
@@ -38,16 +39,16 @@ After training, files in /data would be structured as follows:
       │ ...
 ```
 ## Analysis
-*All analysis results of main RNN model in the paper can be reproduced by **Main_analysis.py**. Simply uncommenmt corresponding lines and run the script.*
+*All analysis results of main RNN models in the paper can be reproduced by **Main_analysis.py**. Simply uncommenmt corresponding lines and run the script.*
 
 ### Analysis Function Instruction
-**print_basic_info** would show you the performance growth curve and other basic information of the model, which can hlep you to decide which rules and trial range to analyze. (corresponding to Fig.S5 in paper)
+**print_basic_info** would show the task performance during training and other basic information of the model, which can help you to decide which tasks(rules) and trials range(performance range) to analyze (corresponding to Fig.S7 in paper).
 
 <p align="center">
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/growth_of_performance.png"  width="800">
 </p>
 
-**compute_H/gen_task_info** both generate the information of tasks to be analyzed. compute_H would also save the hidden layer response as .pkl files to accelerate subsquent analysis procedure, while gen_task_info only save task information to save up storage. 
+**compute_H/gen_task_info** both generate the information of tasks to be analyzed. *compute_H* would also save the activity of RNN units of the hidden layer as .pkl files to accelerate subsquent analysis procedure, while *gen_task_info* only save task information to save up storage. 
 
 ```
 ├─data
@@ -68,7 +69,7 @@ After training, files in /data would be structured as follows:
       │ ...
 ```
 
-**generate_neuron_info** analyzes the neuron selectivity and save it as .pkl files.
+**generate_neuron_info** analyzes the selectivities of RNN units and save them as .pkl files.
 
 ```
 ├─data
@@ -97,13 +98,13 @@ After training, files in /data would be structured as follows:
       │ ...
 ```
 
-**tunning_analysis**  plots neuron tunning feature. (corresponding to Fig.5 in paper)
+**tunning_analysis**  plots tunning curves of RNN units. (corresponding to Fig.S3 in paper)
 
 <p align="center">
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odrd_stim1_(520960%2C%20628480)_step_1280_tuning_analysis.png"  width="800">
 </p>
 
-**plot_PSTH** plots the population activity of responsive RNN units (corresponding to Fig.4, Fig.6, Fig.S3 and Fig.S6 in paper)
+**plot_PSTH** plots mean rate of the RNN units responsive to the ODR task, during three developmental stages (corresponding to Fig.4, Fig.6, Fig.S3 and Fig.S6 in paper)
 
 <p align="center">
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odrd_stim1_(520960%2C%20628480)_step_1280_PSTH.png"  width="800">
