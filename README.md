@@ -4,7 +4,7 @@
 matplotlib, statsmodels, scipy, pandas, Tensorflow 1.9 or higher (but not 2.X)
 
 ## Colab
-Here we also provide a jupter notebook *RNN_BrainMaturation.ipynb* that you can directly use in google Colab to train the models and perform the main analysis. 
+Here we also provide a jupyter notebook *RNN_BrainMaturation.ipynb* that you can directly use in google Colab to train the models and perform the main analysis. 
 
 ## Training
 
