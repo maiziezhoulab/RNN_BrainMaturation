@@ -69,7 +69,7 @@ Most of the analysis in the paper can be reproduced by **Main_analysis.py**. Sim
       │ ...
 ```
 
-**generate_neuron_info** analyzes the selectivities of RNN units and save them as .pkl files.
+**generate_neuron_info** analyzes the selectivities of RNN units and save them as .pkl files for further analysis.
 
 ```
 ├─data
