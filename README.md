@@ -48,7 +48,7 @@ Most of the analysis in the paper can be reproduced by **Main_analysis.py**. Sim
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/growth_of_performance.png"  width="800">
 </p>
 
-**compute_H/gen_task_info** both generate the information of tasks to be analyzed. *compute_H* would also save the activities of RNN units of the hidden layer as .pkl files to accelerate subsquent analysis procedure, while *gen_task_info* only save task information to save up storage. 
+**compute_H/gen_task_info** both generate the information of tasks to be analyzed. *compute_H* would also save the activities of RNN units of the hidden layer as .pkl files to accelerate subsequent analysis procedure.
 
 ```
 ├─data
