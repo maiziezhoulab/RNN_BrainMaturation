@@ -39,10 +39,10 @@ After training, files in */data* would be structured as follows:
       │ ...
 ```
 ## Analysis
-*All analysis results of main RNN models in the paper can be reproduced by **Main_analysis.py**. Simply uncommenmt corresponding lines and run the script.*
+All analysis results of main RNN models in the paper can be reproduced by **Main_analysis.py**. Simply uncommenmt corresponding lines and run the script.
 
 ### Analysis Function Instruction
-**print_basic_info** would show the task performance during training and other basic information of the model, which can help you to decide which tasks(rules) and trials range(performance range) to analyze (corresponding to Fig.S7 in paper).
+**print_basic_info** would show the task performance during training and other basic information of the model, which can help you to decide which tasks(rules) and trials range(performance range) to analyze (corresponding to Fig.S7 in the paper).
 
 <p align="center">
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/growth_of_performance.png"  width="800">
@@ -98,19 +98,19 @@ After training, files in */data* would be structured as follows:
       │ ...
 ```
 
-**tunning_analysis**  plots tunning curves of RNN units. (corresponding to Fig.S3 in paper)
+**tunning_analysis**  plots tunning curves of RNN units. (corresponding to Fig.S3 in the paper)
 
 <p align="center">
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odrd_stim1_(520960%2C%20628480)_step_1280_tuning_analysis.png"  width="800">
 </p>
 
-**plot_PSTH** plots mean rate of the RNN units responsive to the ODR task, during three developmental stages (corresponding to Fig.4, Fig.6, Fig.S3 and Fig.S6 in paper)
+**plot_PSTH** plots mean rate of the RNN units responsive to the ODRD task, during three developmental stages (corresponding to Fig.4 in the paper)
 
 <p align="center">
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odrd_stim1_(520960%2C%20628480)_step_1280_PSTH.png"  width="800">
 </p>
 
-**plot_epoch_mean_growth** plots the mean fire rate value change of a specified epoch in a task during training. (corresponding to Fig.S2 in paper)
+**plot_epoch_mean_growth** plots the mean fire rate value change of a specified epoch in a task during training. (corresponding to Fig.S2 in the paper)
 
 <p align="center">
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/delay1_epoch_mean_growth.png"  width="800">
