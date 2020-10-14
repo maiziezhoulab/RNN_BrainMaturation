@@ -122,7 +122,7 @@ Most of the analysis in the paper can be reproduced by **Main_analysis.py**. Sim
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odr_stim1_odrd_stim1exh_neurons_mix_neurons_seldir_analysis.png"  width="800">
 </p>
 
-**neuron_period_activity_analysis** plots the distribution of the neuron fire rate in a particular time period/epoch at different maturation stages. (corresponding to Fig.S1 in paper)
+**neuron_period_activity_analysis** plots the distribution of the neuron fire rate in a particular time period/epoch at different maturation stages (corresponding to Fig.S1 in paper).
 
 <p align="center">
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odrd_delay2_activity_oneway_anova_analysis.png"  width="800">
@@ -130,7 +130,7 @@ Most of the analysis in the paper can be reproduced by **Main_analysis.py**. Sim
 
 
 
-**sample_neuron_by_trial** generates a set of pictures for each chosen model which describes every responsive unit's direction selectivity by polar map. (corresponding to Fig.3 in paper)
+**sample_neuron_by_trial** plots activity of an example unit in working memory task (corresponding to Fig.3 in the paper)
 
 <p align="center">
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/115.png"  width="800">
