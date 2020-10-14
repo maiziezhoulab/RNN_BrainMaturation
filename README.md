@@ -125,6 +125,6 @@ Most of the analysis in the paper can be reproduced by **Main_analysis.py**. Sim
 
 ### Figure File Structure
 
-## More Training and Analysis
+## Training with different hyper-parameters
 
-**More_training.py** contains a set of trainig examples with different hyperparameters (hp) or trained on different rules. Corresponding analysis code can be found in **More_training_analysis.py**. Please note that due to the difference in analysis procedure, analysis for MoN rules (match_or_non, match_or_non_easy and match_or_non_passive) is written in **MoN_analysis.py**. The training example set for MoN rules is *set5*
+**More_training.py** contains a set of trainig examples with different hyperparameters (hp) or trained on different rules. Corresponding analysis code can be found in **More_training_analysis.py**. 
