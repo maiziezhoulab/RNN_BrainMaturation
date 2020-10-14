@@ -130,7 +130,7 @@ Most of the analysis in the paper can be reproduced by **Main_analysis.py**. Sim
 **More_training.py** contains a set of trainig examples with different hyperparameters (hp) or trained on different rules. Corresponding analysis code can be found in **More_training_analysis.py**. 
 
 ## Cite the Work
-Emergence of prefrontal neuron maturation properties by training recurrent neural networks in cognitive tasks
+##### Emergence of prefrontal neuron maturation properties by training recurrent neural networks in cognitive tasks
 ##### <a href="xxx">bioRxiv link</a>
 
 ## Troubleshooting
