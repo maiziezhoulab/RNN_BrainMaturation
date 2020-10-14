@@ -39,7 +39,7 @@ After training, files in */data* would be structured as follows:
       │ ...
 ```
 ## Analysis
-All analysis results of main RNN models in the paper can be reproduced by **Main_analysis.py**. Simply uncommenmt corresponding lines and run the script.
+Most of the analysis in the paper can be reproduced by **Main_analysis.py**. Simply uncommenmt corresponding lines and run the script.
 
 ### Analysis Function Instruction
 **print_basic_info** would show the task performance during training and other basic information of the model, which can help you to decide which tasks(rules) and trials range(performance range) to analyze (corresponding to Fig.S7 in the paper).
