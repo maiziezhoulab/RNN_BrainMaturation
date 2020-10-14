@@ -98,7 +98,7 @@ Most of the analysis in the paper can be reproduced by **Main_analysis.py**. Sim
       │ ...
 ```
 
-**tunning_analysis**  plots tunning curves of RNN units (corresponding to Fig.S3 in the paper).
+**tunning_analysis**  plots tunning curves of RNN units in the cue period (corresponding to Fig.S3B in the paper).
 
 <p align="center">
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odrd_stim1_(520960%2C%20628480)_step_1280_tuning_analysis.png"  width="800">
