@@ -110,7 +110,7 @@ Most of the analysis in the paper can be reproduced by **Main_analysis.py**. Sim
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odrd_stim1_(520960%2C%20628480)_step_1280_PSTH.png"  width="800">
 </p>
 
-**plot_epoch_mean_growth** plots RNN activity during the course of training (corresponding to Fig.S2 in the paper).
+**plot_epoch_mean_growth** plots RNN activity during the course of training in the delay period (corresponding to Fig.S2B in the paper).
 
 <p align="center">
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/delay1_epoch_mean_growth.png"  width="800">
