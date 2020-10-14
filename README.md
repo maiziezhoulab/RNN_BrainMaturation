@@ -116,14 +116,6 @@ Most of the analysis in the paper can be reproduced by **Main_analysis.py**. Sim
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/delay1_epoch_mean_growth.png"  width="800">
 </p>
 
-**seldir_analysis** compares the RNN units' direction selectivity between two epochs from chosen tasks. Blue line represents the number of neurons that selective in both epochs. orange line shows the number of neurons which have same direction selectivity in these epochs, while the green line shows the number of neurons that behave differently on direction selectivity in these epochs. (Blue=Orange+Green) (corresponding to Fig.S4 in paper)
-
-<p align="center">
-	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odr_stim1_odrd_stim1exh_neurons_mix_neurons_seldir_analysis.png"  width="800">
-</p>
-
-
-
 
 **sample_neuron_by_trial** plots activity of a single example unit in working memory task (corresponding to Fig.3B in the paper, but not the same unit)
 
