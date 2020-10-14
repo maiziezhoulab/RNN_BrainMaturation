@@ -130,7 +130,7 @@ Most of the analysis in the paper can be reproduced by **Main_analysis.py**. Sim
 
 
 
-**sample_neuron_by_trial** plots activity of an example unit in working memory task (corresponding to Fig.3 in the paper)
+**sample_neuron_by_trial** plots activity of a single example unit in working memory task (corresponding to Fig.3 in the paper)
 
 <p align="center">
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/115.png"  width="800">
