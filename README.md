@@ -98,16 +98,16 @@ Most of the analysis in the paper can be reproduced by **Main_analysis.py**. Sim
       │ ...
 ```
 
-**tunning_analysis**  plots tunning curves of RNN units in the cue period (corresponding to Fig.S3B in the paper).
-
-<p align="center">
-	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odrd_stim1_(520960%2C%20628480)_step_1280_tuning_analysis.png"  width="800">
-</p>
-
 **plot_PSTH** plots mean rate of the RNN units responsive to the ODRD task, during three developmental stages (corresponding to Fig.4E,F,G in the paper).
 
 <p align="center">
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odrd_stim1_(520960%2C%20628480)_step_1280_PSTH.png"  width="800">
+</p>
+
+**sample_neuron_by_trial** plots activity of a single example unit in working memory task (corresponding to Fig.3B in the paper, but not the same unit)
+
+<p align="center">
+	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/115.png"  width="800">
 </p>
 
 **plot_epoch_mean_growth** plots RNN activity during the course of training in the delay period (corresponding to Fig.S2B in the paper).
@@ -116,12 +116,12 @@ Most of the analysis in the paper can be reproduced by **Main_analysis.py**. Sim
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/delay1_epoch_mean_growth.png"  width="800">
 </p>
 
-
-**sample_neuron_by_trial** plots activity of a single example unit in working memory task (corresponding to Fig.3B in the paper, but not the same unit)
+**tunning_analysis**  plots tunning curves of RNN units in the cue period (corresponding to Fig.S3B in the paper).
 
 <p align="center">
-	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/115.png"  width="800">
+	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odrd_stim1_(520960%2C%20628480)_step_1280_tuning_analysis.png"  width="800">
 </p>
+
 
 ### Figure File Structure
 
