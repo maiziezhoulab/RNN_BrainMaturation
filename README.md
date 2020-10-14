@@ -122,11 +122,6 @@ Most of the analysis in the paper can be reproduced by **Main_analysis.py**. Sim
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odr_stim1_odrd_stim1exh_neurons_mix_neurons_seldir_analysis.png"  width="800">
 </p>
 
-**neuron_period_activity_analysis** plots the distribution of the neuron fire rate in a particular time period/epoch at different maturation stages (corresponding to Fig.S1 in paper).
-
-<p align="center">
-	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odrd_delay2_activity_oneway_anova_analysis.png"  width="800">
-</p>
 
 
 
