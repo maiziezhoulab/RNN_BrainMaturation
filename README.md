@@ -4,7 +4,7 @@
 matplotlib, statsmodels, scipy, pandas, Tensorflow 1.9 or higher (but not 2.X)
 
 ## Colab
-Here we also provide a jupyter notebook **RNN_BrainMaturation.ipynb** that you can directly use in google Colab to train the models and perform the main analysis. 
+Here we also provide a jupyter notebook **RNN_BrainMaturation.ipynb** that you can directly use in google Colab to train the models and perform some main analysis. 
 
 ## Training
 
@@ -127,7 +127,7 @@ Most of the analysis in the paper can be reproduced by **Main_analysis.py**. Sim
 
 ## Training with different hyper-parameters
 
-**More_training.py** contains a set of trainig examples with different hyperparameters (hp) or trained on different rules. Corresponding analysis code can be found in **More_training_analysis.py**. 
+**Training_with_diff_HyperParameters.py** contains a set of trainig examples with different hyperparameters (hp) or trained on different rules. Corresponding analysis code can be found in **Analysis_with_diff_HyperParameters.py**. 
 
 ## Cite the Work
 #### Emergence of prefrontal neuron maturation properties by training recurrent neural networks in cognitive tasks
