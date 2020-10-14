@@ -104,7 +104,7 @@ Most of the analysis in the paper can be reproduced by **Main_analysis.py**. Sim
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odrd_stim1_(520960%2C%20628480)_step_1280_tuning_analysis.png"  width="800">
 </p>
 
-**plot_PSTH** plots mean rate of the RNN units responsive to the ODRD task, during three developmental stages (corresponding to Fig.4 in the paper).
+**plot_PSTH** plots mean rate of the RNN units responsive to the ODRD task, during three developmental stages (corresponding to Fig.4E,F,G in the paper).
 
 <p align="center">
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/odrd_stim1_(520960%2C%20628480)_step_1280_PSTH.png"  width="800">
