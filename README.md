@@ -135,8 +135,6 @@ Most of the analysis in the paper can be reproduced by **Main_analysis.py**. Sim
 </p>
 
 
-### Figure File Structure
-
 ## Training with different hyper-parameters
 
 **Training_with_diff_HyperParameters.py** contains a set of trainig examples with different hyperparameters (hp) or trained on different rules. Corresponding analysis code can be found in **Analysis_with_diff_HyperParameters.py**. 
