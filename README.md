@@ -120,7 +120,7 @@ Most of the analysis in the paper can be reproduced by **Main_analysis.py**. Sim
 **plot_epoch_mean_growth** plots RNN activity during the course of training in the delay period (corresponding to Fig.S2B in the paper).
 
 <p align="center">
-	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/delay1_epoch_mean_growth.png"  width="500">
+	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/delay1_epoch_mean_growth.png"  width="400">
 </p>
 
 **tunning_analysis**  plots tunning curves of RNN units in the cue period (corresponding to Fig.S3B in the paper).
