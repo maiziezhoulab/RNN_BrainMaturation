@@ -43,9 +43,9 @@ def sample_neuron(hp,log,model_dir,rule,epoch,trial_list,n_type):
             sample_n = sorted(n_list,key=lambda x:x[1])[0]
 
         perf = log['perf_'+rule][trial_num//log['trials'][1]]
-        if perf<=hp['infancy_target_perf']:
+        if perf<=hp['early_target_perf']:
             color = 'green'
-        elif perf<=hp['young_target_perf']:
+        elif perf<=hp['mid_target_perf']:
             color = 'blue'
         else:
             color = 'red'

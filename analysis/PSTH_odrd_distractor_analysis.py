@@ -54,17 +54,17 @@ def get_abs_dist(loc_a,loc_b,total_len):
 
 def odrd_distractor_analysis(hp,log,model_dir,trial_list,):
 
-    infant_record = list()
-    young_record = list()
-    adult_record = list()
+    early_record = list()
+    mid_record = list()
+    mature_record = list()
 
-    infant_saccade_dir = dict()
-    young_saccade_dir = dict()
-    adult_saccade_dir = dict()
+    early_saccade_dir = dict()
+    mid_saccade_dir = dict()
+    mature_saccade_dir = dict()
     for d in range(hp['n_eachring']//2+1):
-        infant_saccade_dir[d] = list()
-        young_saccade_dir[d] = list()
-        adult_saccade_dir[d] = list()
+        early_saccade_dir[d] = list()
+        mid_saccade_dir[d] = list()
+        mature_saccade_dir[d] = list()
 
     for trial_num in trial_list:
 
@@ -97,40 +97,40 @@ def odrd_distractor_analysis(hp,log,model_dir,trial_list,):
             temp_pref_list[-1] /= 2
 
         matur = log['perf_odrd'][trial_num//log['trials'][1]]
-        if matur<=hp['infancy_target_perf']:
-            infant_record.append(temp_pref_list)
+        if matur<=hp['early_target_perf']:
+            early_record.append(temp_pref_list)
             for key,value in saccade_dir_temp.items():
-                infant_saccade_dir[key] += value
-        elif matur<=hp['young_target_perf']:
-            young_record.append(temp_pref_list)
+                early_saccade_dir[key] += value
+        elif matur<=hp['mid_target_perf']:
+            mid_record.append(temp_pref_list)
             for key,value in saccade_dir_temp.items():
-                young_saccade_dir[key] += value
+                mid_saccade_dir[key] += value
         else:
-            adult_record.append(temp_pref_list)
+            mature_record.append(temp_pref_list)
             for key,value in saccade_dir_temp.items():
-                adult_saccade_dir[key] += value
+                mature_saccade_dir[key] += value
 
-    infant_trial_count = len(infant_record)
-    young_trial_count = len(young_record)
-    adult_trial_count = len(adult_record)
+    early_trial_count = len(early_record)
+    mid_trial_count = len(mid_record)
+    mature_trial_count = len(mature_record)
 
-    infant_record = np.array(infant_record).mean(axis=0)
-    young_record = np.array(young_record).mean(axis=0)
-    adult_record = np.array(adult_record).mean(axis=0)
+    early_record = np.array(early_record).mean(axis=0)
+    mid_record = np.array(mid_record).mean(axis=0)
+    mature_record = np.array(mature_record).mean(axis=0)
 
     abs_dist_list = np.arange(hp['n_eachring']//2+1)
 
     fig,ax = plt.subplots(figsize=(10,6))
     try:
-        ax.plot(abs_dist_list,infant_record,color='green',label='infant trial_num:'+str(infant_trial_count))
+        ax.plot(abs_dist_list,early_record,color='green',label='early trial_num:'+str(early_trial_count))
     except:
         pass
     try:
-        ax.plot(abs_dist_list,young_record,color='blue',label='young trial_num:'+str(young_trial_count))
+        ax.plot(abs_dist_list,mid_record,color='blue',label='mid trial_num:'+str(mid_trial_count))
     except:
         pass
     try:
-        ax.plot(abs_dist_list,adult_record,color='red',label='adult trial_num:'+str(adult_trial_count))
+        ax.plot(abs_dist_list,mature_record,color='red',label='mature trial_num:'+str(mature_trial_count))
     except:
         pass
     ax.set_xticks(abs_dist_list)
@@ -147,12 +147,12 @@ def odrd_distractor_analysis(hp,log,model_dir,trial_list,):
 
     for d in range(hp['n_eachring']//2+1):
         fig,axes = plt.subplots(1,3,figsize=(18,6))
-        axes[0].hist(infant_saccade_dir[d],bins=30,range=(0,180), histtype="stepfilled",alpha=0.6, color="green")
-        axes[0].set_title("infant")
-        axes[1].hist(young_saccade_dir[d],bins=30,range=(0,180), histtype="stepfilled",alpha=0.6, color="blue")
-        axes[1].set_title("young")
-        axes[2].hist(adult_saccade_dir[d],bins=30,range=(0,180), histtype="stepfilled",alpha=0.6, color="red")
-        axes[2].set_title("adult")
+        axes[0].hist(early_saccade_dir[d],bins=30,range=(0,180), histtype="stepfilled",alpha=0.6, color="green")
+        axes[0].set_title("early")
+        axes[1].hist(mid_saccade_dir[d],bins=30,range=(0,180), histtype="stepfilled",alpha=0.6, color="blue")
+        axes[1].set_title("mid")
+        axes[2].hist(mature_saccade_dir[d],bins=30,range=(0,180), histtype="stepfilled",alpha=0.6, color="red")
+        axes[2].set_title("mature")
         fig.suptitle("distractor distance: "+str(d))
 
         save_pic = save_folder+'saccade_distribut_analysis_by_growth_dis_'+str(d)
@@ -162,54 +162,3 @@ def odrd_distractor_analysis(hp,log,model_dir,trial_list,):
 
         plt.close(fig)
 
-
-'''
-def odrd_distractor_analysis(hp,log,model_dir,trial_num,):
-
-    stim1 = 0
-    pref_list = np.zeros(hp['n_eachring']+1)
-
-    model = Model(model_dir+'/'+str(trial_num)+'/', hp=hp)
-    with tf.Session() as sess:
-        model.restore()
-
-        for distrac in range(0,hp['n_eachring']):
-
-            task_mode = 'test-'+str(stim1)+'-'+str(distrac)
-            trial = generate_trials('odrd', hp, task_mode)
-            feed_dict = tools.gen_feed_dict(model, trial, hp)
-
-            y_hat_test = sess.run(model.y_hat,feed_dict=feed_dict)
-            perf_test = np.mean(get_perf(y_hat_test, trial.y_loc))
-            pref_list[distrac] = perf_test
-    
-    pref_list[-1] = pref_list[0]
-
-    matur = log['perf_odrd'][trial_num//log['trials'][1]]
-    if matur<=hp['infancy_target_perf']:
-        color = 'green'
-    elif matur<=hp['young_target_perf']:
-        color = 'blue'
-    else:
-        color = 'red'
-
-    fig,ax = plt.subplots(figsize=(10,11),subplot_kw=dict(projection='polar'))
-    ax.set_theta_zero_location('N')
-    ax.set_theta_direction(-1)
-
-    theta1 = np.arange(0,2*np.pi,2*np.pi/360)
-    stim1_dir_point = np.zeros(360)
-    stim1_dir_point[stim1*int(360/hp['n_eachring'])] = 1
-
-    ax.plot(theta1,stim1_dir_point,color='black')
-
-    theta2 = np.arange(0, 2 * np.pi + 0.00000001, 2 * np.pi / hp['n_eachring'])
-    ax.plot(theta2,pref_list,color=color)
-
-    save_folder = 'figure/figure_'+model_dir.rstrip('/').split('/')[-1]+'/odrd/odrd_distractor_analysis/stim1_'+str(stim1)+'/'
-    tools.mkdir_p(save_folder)
-    save_pic = save_folder+str(trial_num)
-    #plt.savefig(save_pic+'.png',transparent=False)
-    #plt.savefig(save_pic+'.eps',transparent=False)
-    plt.savefig(save_pic+'.pdf',transparent=False)
-'''

@@ -53,12 +53,12 @@ def neuron_period_activity_analysis(hp,
 
     for trial_num in trial_list:
         growth = log['perf_'+rule][trial_num//log['trials'][1]]
-        if growth <= hp['infancy_target_perf']:
-            mature = 'infant'
-        elif growth <= hp['young_target_perf']:
-            mature = 'young'
+        if growth <= hp['early_target_perf']:
+            mature = 'early'
+        elif growth <= hp['mid_target_perf']:
+            mature = 'mid'
         else:
-            mature = 'adult'
+            mature = 'mature'
         
         if mature not in trial_sort_by_matur:
             trial_sort_by_matur[mature] = list()
@@ -94,7 +94,7 @@ def neuron_period_activity_analysis(hp,
     #print("\tP value:",anova_table['PR(>F)'][0])
 
     # plot #
-    colors = {'infant':'green','young':'blue','adult':'red'}
+    colors = {'early':'green','mid':'blue','mature':'red'}
     save_path = 'figure/figure_'+model_dir.rstrip('/').split('/')[-1]+'/'+rule+'/'+seltive_epoch+'/'+'_'.join(n_types)+'/'
     fig,axes = plt.subplots(2,1,figsize=(12,15))
     for mature,fire_rate in fire_rate_dict.items():

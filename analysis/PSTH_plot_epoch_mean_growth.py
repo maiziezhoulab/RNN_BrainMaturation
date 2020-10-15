@@ -29,14 +29,14 @@ def plot_epoch_mean_growth(hp,
         task_info = pickle.load(tinf)
 
     if PSTH_log is None:
-        PSTH_log = gen_PSTH_log(trial_list,model_dir,rule,seltive_epoch,n_types=n_types,norm=norm)
+        PSTH_log = gen_PSTH_log(hp,trial_list,model_dir,rule,seltive_epoch,n_types=n_types,norm=norm)
 
     fig, ax = plt.subplots()
     for trial_num in trial_list:
         growth = log['perf_'+rule][trial_num//log['trials'][1]]
-        if growth <= hp['infancy_target_perf']:
+        if growth <= hp['early_target_perf']:
             color = 'green'
-        elif growth <= hp['young_target_perf']:
+        elif growth <= hp['mid_target_perf']:
             color = 'blue'
         else:
             color = 'red'

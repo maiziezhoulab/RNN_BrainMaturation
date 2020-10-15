@@ -31,15 +31,15 @@ def sample_neuron_by_trial(hp,log,model_dir,rule,epoch,trial_list,n_type,):
         #sample_n:(neuron,p,sel_dir)
 
         perf = log['perf_'+rule][trial_num//log['trials'][1]]
-        if perf<=hp['infancy_target_perf']:
+        if perf<=hp['early_target_perf']:
             color = 'green'
-            save_folder = save_root_folder+str(trial_num)+'infan/'+n_type+'/'
-        elif perf<=hp['young_target_perf']:
+            save_folder = save_root_folder+str(trial_num)+'early/'+n_type+'/'
+        elif perf<=hp['mid_target_perf']:
             color = 'blue'
-            save_folder = save_root_folder+str(trial_num)+'young/'+n_type+'/'
+            save_folder = save_root_folder+str(trial_num)+'mid/'+n_type+'/'
         else:
             color = 'red'
-            save_folder = save_root_folder+str(trial_num)+'adult/'+n_type+'/'
+            save_folder = save_root_folder+str(trial_num)+'mature/'+n_type+'/'
 
         tools.mkdir_p(save_folder)
 

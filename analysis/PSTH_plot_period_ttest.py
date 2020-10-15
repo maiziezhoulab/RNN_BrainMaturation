@@ -31,7 +31,7 @@ def plot_period_ttest_by_growth(
 
     PSTH_log = gen_PSTH_log(hp,trial_list,model_dir,rule,seltive_epoch,norm=norm)
 
-    matur_stages = ['infant','young', 'adult']
+    matur_stages = ['early','mid', 'mature']
     fire_rate_dict = dict()
     for m_key in matur_stages:
         fire_rate_dict[m_key] = OrderedDict()
@@ -39,15 +39,15 @@ def plot_period_ttest_by_growth(
     #Classify by growth
     for trial_num in trial_list:
         growth = log['perf_'+rule][trial_num//log['trials'][1]]
-        #if abs(growth-hp['infancy_target_perf'])<=0.05:
-        if growth <= hp['infancy_target_perf']:
+        #if abs(growth-hp['early_target_perf'])<=0.05:
+        if growth <= hp['early_target_perf']:
             fire_rate_dict[matur_stages[0]][trial_num] = \
                 PSTH_log[trial_num][:,task_info[rule]['epoch_info'][analy_epoch][0]:task_info[rule]['epoch_info'][analy_epoch][1]].mean(axis=1)
-        #elif abs(growth-hp['young_target_perf'])<=0.05:
-        elif growth <= hp['young_target_perf']:
+        #elif abs(growth-hp['mid_target_perf'])<=0.05:
+        elif growth <= hp['mid_target_perf']:
             fire_rate_dict[matur_stages[1]][trial_num] = \
                 PSTH_log[trial_num][:,task_info[rule]['epoch_info'][analy_epoch][0]:task_info[rule]['epoch_info'][analy_epoch][1]].mean(axis=1)
-        #elif abs(growth-hp['adult_target_perf'])<=0.05:
+        #elif abs(growth-hp['mature_target_perf'])<=0.05:
         else:
             fire_rate_dict[matur_stages[2]][trial_num] = \
                 PSTH_log[trial_num][:,task_info[rule]['epoch_info'][analy_epoch][0]:task_info[rule]['epoch_info'][analy_epoch][1]].mean(axis=1)

@@ -54,9 +54,9 @@ def get_abs_dist(loc_a,loc_b,total_len):
 
 def saccade_distribut_analysis(hp,log,rule,model_dir,trial_list,):
 
-    infant_saccade_dir = list()
-    young_saccade_dir = list()
-    adult_saccade_dir = list()
+    early_saccade_dir = list()
+    mid_saccade_dir = list()
+    mature_saccade_dir = list()
 
     for trial_num in trial_list:
 
@@ -75,21 +75,21 @@ def saccade_distribut_analysis(hp,log,rule,model_dir,trial_list,):
                 saccade_dir_temp += dist
 
         matur = log['perf_'+rule][trial_num//log['trials'][1]]
-        if matur<=hp['infancy_target_perf']:
-            infant_saccade_dir += saccade_dir_temp
-        elif matur<=hp['young_target_perf']:
-            young_saccade_dir += saccade_dir_temp
+        if matur<=hp['early_target_perf']:
+            early_saccade_dir += saccade_dir_temp
+        elif matur<=hp['mid_target_perf']:
+            mid_saccade_dir += saccade_dir_temp
         else:
-            adult_saccade_dir += saccade_dir_temp
+            mature_saccade_dir += saccade_dir_temp
 
 
     fig,axes = plt.subplots(1,3,figsize=(18,6))
-    axes[0].hist(infant_saccade_dir,bins=30,range=(0,180), histtype="stepfilled",alpha=0.6, color="green")
-    axes[0].set_title("infant")
-    axes[1].hist(young_saccade_dir,bins=30,range=(0,180), histtype="stepfilled",alpha=0.6, color="blue")
-    axes[1].set_title("young")
-    axes[2].hist(adult_saccade_dir,bins=30,range=(0,180), histtype="stepfilled",alpha=0.6, color="red")
-    axes[2].set_title("adult")
+    axes[0].hist(early_saccade_dir,bins=30,range=(0,180), histtype="stepfilled",alpha=0.6, color="green")
+    axes[0].set_title("early")
+    axes[1].hist(mid_saccade_dir,bins=30,range=(0,180), histtype="stepfilled",alpha=0.6, color="blue")
+    axes[1].set_title("mid")
+    axes[2].hist(mature_saccade_dir,bins=30,range=(0,180), histtype="stepfilled",alpha=0.6, color="red")
+    axes[2].set_title("mature")
     fig.suptitle("saccade distribut analysis")
 
     save_folder = 'figure/figure_'+model_dir.rstrip('/').split('/')[-1]+'/'+rule+'/'

@@ -59,12 +59,12 @@ def tunning_analysis(
     
     for trial_num in trial_list:
         growth = log['perf_'+rule][trial_num//log['trials'][1]]
-        if growth <= hp['infancy_target_perf']:
-            mature_key = "infant"
-        elif growth <= hp['young_target_perf']:
-            mature_key = "young"
+        if growth <= hp['early_target_perf']:
+            mature_key = "early"
+        elif growth <= hp['mid_target_perf']:
+            mature_key = "mid"
         else:
-            mature_key = "adult"
+            mature_key = "mature"
 
         if mature_key not in tuning_store:
             tuning_store[mature_key] = list()
@@ -109,11 +109,11 @@ def tunning_analysis(
 
     for mature_key in tuning_store.keys():
 
-        if mature_key == 'adult':
+        if mature_key == 'mature':
             color = 'red'
-        elif mature_key == 'young':
+        elif mature_key == 'mid':
             color = 'blue'
-        elif mature_key == 'infant':
+        elif mature_key == 'early':
             color = 'green'
 
         temp_tuning = tuning_store[mature_key].mean(axis=0)

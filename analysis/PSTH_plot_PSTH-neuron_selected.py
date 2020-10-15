@@ -142,7 +142,7 @@ def plot_PSTH_neuron_selected(hp,
         PSTH_log[key] = value.mean(axis=0)
 
     data_to_plot = dict()
-    maturation = ["infant","young","adult"]
+    maturation = ["early","mid","mature"]
     data_types = ["PSTH","n_num","growth"]
     if plot_oppo_dir:
         data_types.append("PSTH_oppo")
@@ -155,12 +155,12 @@ def plot_PSTH_neuron_selected(hp,
     for trial_num in trial_list:
         growth = log['perf_'+rule][trial_num//log['trials'][1]]
 
-        if growth <= hp['infancy_target_perf']:
-            m_key = "infant"
-        elif growth <= hp['young_target_perf']:
-            m_key = "young"
+        if growth <= hp['early_target_perf']:
+            m_key = "early"
+        elif growth <= hp['mid_target_perf']:
+            m_key = "mid"
         else:
-            m_key = "adult"
+            m_key = "mature"
 
         data_to_plot[m_key]["PSTH"].append(PSTH_log[trial_num])
         data_to_plot[m_key]["growth"].append(growth)
@@ -181,7 +181,7 @@ def plot_PSTH_neuron_selected(hp,
     trial_range = str((trial_list[0],trial_list[-1]))
     title = 'Rule:'+rule+' Epoch:'+epoch+' trial range:'+trial_range+' step:'+step
 
-    colors = {"infant":"green","young":"blue","adult":"red",}
+    colors = {"early":"green","mid":"blue","mature":"red",}
 
     fig,ax = plt.subplots(figsize=(14,10))
     fig.suptitle(title)

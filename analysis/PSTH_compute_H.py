@@ -16,7 +16,6 @@ def gen_task_info(hp,
                 log,
                 model_dir,  
                 rules, 
-                trial_list,
                 return_trial_store=False,):
     task_info_file = model_dir+'/task_info.pkl'
     if os.path.isfile(task_info_file):
@@ -85,7 +84,7 @@ def compute_H(
     else:
         trial_list = log['trials']
 
-    trial_store = gen_task_info(hp,log,model_dir,rules,trial_list,return_trial_store=True)
+    trial_store = gen_task_info(hp,log,model_dir,rules,True,)
 
     for rule in rules:
 
@@ -110,62 +109,6 @@ def Get_H(hp,model_dir,trial_num,rule,save_H=False,task_mode='test',):
             with open(H_file,'wb') as wh:
                 pickle.dump(H,wh)
     return H  
-
-
-if __name__ == "__main__":
-    import argparse
-    parser = argparse.ArgumentParser(
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument('--modeldir', type=str, default='data/6tasks')
-    parser.add_argument('--rules', type=str, default='None')
-    parser.add_argument('--trial_start', type=str, default='None')
-    parser.add_argument('--trial_end', type=str, default='None')
-    parser.add_argument('--trial_step', type=str, default='None')
-    parser.add_argument('--recompute', type=bool, default=False)
-    args = parser.parse_args()
-    os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-
-    model_dir = args.modeldir
-    hp = tools.load_hp(model_dir)
-    log = tools.load_log(model_dir)
-    
-
-    if args.rules == 'None':
-        rules = None
-    else:
-        rules = args.rules.split(',')
-
-    if args.trial_start == 'None':
-        start = log['trials'][0]
-    else:
-        start = int(args.trial_start)
-
-    if args.trial_end == 'None':
-        end = log['trials'][-1]
-    else:
-        end = int(args.trial_end)
-
-    if args.trial_end == 'None':
-        step = log['trials'][1]
-    else:
-        step = int(args.trial_step)
-
-
-    #for 6tasks folder for odr/odrd stage 
-    #start = 520960
-    #end = 628480
-    #step = 1280*1#3#21#12#7#12
-
-    recompute = args.recompute
-    '''
-    recompute = True
-    start = 520960
-    end = 520960+1280
-    step = 1280
-    '''
-
-    #compute_H(hp,log,model_dir,  rules=rules, trial_list=range(start,end+1,step), recompute=recompute,)
-    compute_H(hp,log,model_dir,  rules=['odr','odrd'], trial_list=range(start,end+1,step), recompute=recompute,)
 
 
     

@@ -53,12 +53,12 @@ def plot_PSTH(
     for trial_num in trial_list:
         growth = log['perf_'+rule][trial_num//log['trials'][1]]
 
-        if growth <= hp['infancy_target_perf']:
-            m_key = "infant"
-        elif growth <= hp['young_target_perf']:
-            m_key = "young"
+        if growth <= hp['early_target_perf']:
+            m_key = "early"
+        elif growth <= hp['mid_target_perf']:
+            m_key = "mid"
         else:
-            m_key = "adult"
+            m_key = "mature"
 
         if m_key not in data_to_plot:
             data_to_plot[m_key] = dict()
@@ -84,7 +84,7 @@ def plot_PSTH(
     trial_range = str((trial_list[0],trial_list[-1]))
     title = 'Rule:'+rule+' Epoch:'+epoch+' Neuron_type:'+'_'.join(n_types)+' trial range:'+trial_range+' step:'+step
 
-    colors = {"infant":"green","young":"blue","adult":"red",}
+    colors = {"early":"green","mid":"blue","mature":"red",}
 
     fig,ax = plt.subplots(figsize=(14,10))
     fig.suptitle(title)
