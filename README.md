@@ -113,7 +113,7 @@ Most of the analysis in the paper can be reproduced by **Main_analysis.py**. Sim
 **neuron_dPCA**  dPCA analysis performed for RNN units in the  mature networks (corresponding to Fig.5E in the paper).
 
 <p align="center">
-	<img src="https://github.com/maiziezhoulab/RNN_BrainMaturation/blob/master/example_pic/dPCA_rnn_odr_adult.png"  width="500">
+	<img src="https://github.com/maiziezhoulab/RNN_BrainMaturation/blob/master/example_pic/dPCA_rnn_odr_adult.png"  width="700">
 </p>
 
 
@@ -132,7 +132,7 @@ Most of the analysis in the paper can be reproduced by **Main_analysis.py**. Sim
 **Decoder_analysis**  Plots cross-temporal decoding accuracy in the ODR task for RNN data (corresponding to Fig.S5E in the paper).
 
 <p align="center">
-	<img src="https://github.com/maiziezhoulab/RNN_BrainMaturation/blob/master/example_pic/odr_628480_w200ms_s20ms.png"  width="400">
+	<img src="https://github.com/maiziezhoulab/RNN_BrainMaturation/blob/master/example_pic/odr_628480_w200ms_s20ms.png"  width="300">
 </p>
 
 
