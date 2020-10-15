@@ -45,7 +45,7 @@ Most of the analysis in the paper can be reproduced by **Main_analysis.py**. Sim
 **print_basic_info** would show the task performance during training and other basic information of the model, which can help you to decide which tasks(rules) and trials range(performance range) to analyze (corresponding to Fig.S7 in the paper).
 
 <p align="center">
-	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/growth_of_performance.png"  width="500">
+	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/growth_of_performance.png"  width="400">
 </p>
 
 **compute_H/gen_task_info** both generate the information of tasks to be analyzed. *compute_H* would also save the activities of RNN units of the hidden layer as .pkl files to accelerate subsequent analysis procedure.
