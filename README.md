@@ -110,6 +110,13 @@ Most of the analysis in the paper can be reproduced by **Main_analysis.py**. Sim
 	<img src="https://github.com/maiziezhoulab/RNN_PFCmaturation/blob/master/example_pic/115.png"  width="800">
 </p>
 
+**neuron_dPCA**  dPCA analysis performed for RNN units in the  mature networks (corresponding to Fig.5E in the paper).
+
+<p align="center">
+	<img src="https://github.com/maiziezhoulab/RNN_BrainMaturation/blob/master/example_pic/dPCA_rnn_odr_adult.png"  width="800">
+</p>
+
+
 **plot_epoch_mean_growth** plots RNN activity during the course of training in the delay period (corresponding to Fig.S2B in the paper).
 
 <p align="center">
@@ -128,11 +135,6 @@ Most of the analysis in the paper can be reproduced by **Main_analysis.py**. Sim
 	<img src="https://github.com/maiziezhoulab/RNN_BrainMaturation/blob/master/example_pic/odr_628480_w200ms_s20ms.png"  width="800">
 </p>
 
-**neuron_dPCA**  dPCA analysis performed for RNN units in the  mature networks (corresponding to Fig.5E in the paper).
-
-<p align="center">
-	<img src="https://github.com/maiziezhoulab/RNN_BrainMaturation/blob/master/example_pic/dPCA_rnn_odr_adult.png"  width="800">
-</p>
 
 
 ## Training with different hyper-parameters
