@@ -5,7 +5,8 @@ matplotlib, statsmodels, scipy, pandas, Tensorflow 1.9 or higher (but not 2.X)
 
 ## Colab
 Here we also provide a jupyter notebook **RNN_BrainMaturation.ipynb** that you can directly use in google Colab to train the models and perform some main analyses. 
-To use **RNN_BrainMaturation.ipynb**, download "RNN_BrainMaturation" via git clone and save it in the google drive. 
+
+*To use **RNN_BrainMaturation.ipynb**, download "RNN_BrainMaturation" via git clone and save it in the google drive. 
 
 ## Training
 
