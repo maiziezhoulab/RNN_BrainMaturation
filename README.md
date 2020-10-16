@@ -145,7 +145,7 @@ Most of the analysis in the paper can be reproduced by **Main_analysis.py**. Sim
 
 ## Cite the Work
 #### Emergence of prefrontal neuron maturation properties by training recurrent neural networks in cognitive tasks
-#### <a href="xxx">bioRxiv link</a>
+#### <a href="https://www.biorxiv.org/content/10.1101/2020.10.15.339663v1">bioRxiv link</a>
 
 ## Troubleshooting
 #### Please submit issues on the github page for <a href="https://github.com/maiziezhoulab/RNN_BrainMaturation/issues">RNN_BrainMaturation</a>. 
