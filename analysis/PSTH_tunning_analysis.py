@@ -132,7 +132,7 @@ def tunning_analysis(
             gaussian_y = gaussian(gaussian_x,paras[0],paras[1],paras[2])-np.min(temp_tuning)*(-1)
             width = paras[2]
 
-            ax.plot(gaussian_x, gaussian_y, color=color,linestyle = '--',\
+            ax.plot(gaussian_x, gaussian_y, color=color,\
                 label = mature_key+' curve_width:%.2f'%(width*2))
 
     if height_ttest:

@@ -4,6 +4,7 @@ import numpy as np
 import pickle
 
 from .PSTH_compute_H import Get_H
+from .PSTH_gen_neuron_info import generate_neuron_info
 
 def gen_PSTH_log(
                 hp,
@@ -27,8 +28,11 @@ def gen_PSTH_log(
         H = Get_H(hp,model_dir,trial_num,rule,save_H=False,task_mode='test',)
 
         n_info_file = model_dir+'/'+str(trial_num)+'/neuron_info_'+rule+'_'+seltive_epoch+'.pkl'
+        if not os.path.isfile(n_info_file):
+            generate_neuron_info(hp,model_dir,epochs=[seltive_epoch,],trial_list=[trial_num,],rules=[rule,],verbose=False)
         with open(n_info_file,'rb') as ninf:
             n_info = pickle.load(ninf)
+			
 
         n_list = list()
         for n_type in n_types:

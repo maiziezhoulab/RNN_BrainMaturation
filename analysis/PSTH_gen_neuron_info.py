@@ -22,7 +22,8 @@ def generate_neuron_info(
                         annova_p_value = 0.05,
                         paired_ttest_p = 0.05, 
                         abs_active_thresh = 1e-3,
-                        recompute = False):
+                        recompute = False,
+						verbose=True,):
 
     with open(model_dir+'/task_info.pkl','rb') as tinf:
         task_info = pickle.load(tinf)
@@ -31,8 +32,8 @@ def generate_neuron_info(
 
 
         for epoch in epochs:
-
-            print('\nStart '+rule+' '+epoch+':')
+            if verbose:
+                print('\nStart '+rule+' '+epoch+':')
 
             count = 0
 
@@ -40,7 +41,8 @@ def generate_neuron_info(
 
                 count+=1
                 process = count/len(trial_list)*100
-                print ("\r processing... %.1f%%"%(process), end="",flush=True)
+                if verbose:
+                    print ("\r processing... %.1f%%"%(process), end="",flush=True)
 
                 save_name = model_dir+'/'+str(trial_num)+'/neuron_info_'+rule+'_'+epoch+'.pkl'
 
