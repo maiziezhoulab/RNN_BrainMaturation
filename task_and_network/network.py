@@ -759,7 +759,7 @@ class Model(object):
             # Some earlier checkpoints only stored trainable variables
             self.saver = tf.train.Saver(self.var_list)
             self.saver.restore(sess, save_path)
-        print("Model restored from file: %s" % save_path)
+#        print("Model restored from file: %s" % save_path)
 
     def save(self,modeldir=None):#modified by yichen
         """Save the model."""
