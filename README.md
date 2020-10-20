@@ -8,6 +8,10 @@ Here we also provide a jupyter notebook **RNN_BrainMaturation.ipynb** that you c
 
 *To use **RNN_BrainMaturation.ipynb**, download "RNN_BrainMaturation" via git clone and save it in the google drive. 
 
+## Pretrained model
+
+Model used in paper can be downloaded from  <a href="https://drive.google.com/file/d/1l6Gg0vUnDVpGUhJAEG86UaMD1d3BHtWu/view?usp=sharing">here</a>
+
 ## Training
 
 *Training scripts (including train.py, task.py and network.py) are partly adapted from* <a href="https://github.com/gyyang/multitask">Multitask</a> 
