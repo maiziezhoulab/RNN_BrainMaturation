@@ -77,12 +77,12 @@ def get_default_hp(ruleset):
             'p_weight_train': None,
             # Stopping performance
             'target_perf': 0.95,
-            # Adult performance
-            'adult_target_perf': 0.95, #add by yichen
-            # Young performance
-            'young_target_perf': 0.65, #add by yichen
-            # Infancy performance
-            'infancy_target_perf': 0.35, #add by yichen
+            # Mature performance
+            'mature_target_perf': 0.95, #add by yichen
+            # Mid performance
+            'mid_target_perf': 0.65, #add by yichen
+            # Early performance
+            'early_target_perf': 0.35, #add by yichen
             # number of units each ring
             'n_eachring': n_eachring,
             # number of rings
@@ -162,14 +162,14 @@ def do_eval(sess, model, log, rule_train):
               '  | perf {:0.2f}'.format(np.mean(perf_tmp)))
         sys.stdout.flush()
         # add by yichen=====================================================
-        if np.mean(perf_tmp) <= hp['infancy_target_perf']:
-            rule_grow[rule_test] = '=>I'
-        elif np.mean(perf_tmp) <= hp['young_target_perf']:
-            rule_grow[rule_test] = 'I=>Y'
-        elif np.mean(perf_tmp)<=hp['adult_target_perf']:
-            rule_grow[rule_test] = 'Y=>A'
+        if np.mean(perf_tmp) <= hp['early_target_perf']:
+            rule_grow[rule_test] = '=>E'
+        elif np.mean(perf_tmp) <= hp['mid_target_perf']:
+            rule_grow[rule_test] = 'E=>MID'
+        elif np.mean(perf_tmp)<=hp['mature_target_perf']:
+            rule_grow[rule_test] = 'MID=>A'
         else:
-            rule_grow[rule_test] = 'Adult'
+            rule_grow[rule_test] = 'MATURE'
         #===================================================================
 
     # TODO: This needs to be fixed since now rules are strings
@@ -197,7 +197,7 @@ def train(model_dir,
           hp=None,
           max_steps=1e7,
           display_step=500,
-          ruleset='mante',
+          ruleset='all_new',
           rule_trains=None,
           rule_prob_map=None,
           seed=0,
