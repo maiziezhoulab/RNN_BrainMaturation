@@ -1,5 +1,6 @@
 from utils import tools
 import os
+import numpy as np
 
 from analysis.PSTH_print_basic_info import print_basic_info
 from analysis.PSTH_compute_H import compute_H, gen_task_info
@@ -30,18 +31,25 @@ if __name__ == "__main__":
     
     recompute = False
 
-    trial_list_odr_odrd = range(520960,628480+1,1280)
-    trial_list_antisacc = range(0,102400+1,1280)
-    trial_list_all = range(log['trials'][0],log['trials'][-1]+1,1280)
+    #trial_list_odr_odrd = range(520960,log['trials'][-1]+1,1280)
+    #trial_list_odr_odrd = range(350720,log['trials'][-1]+1,1280)
+    #trial_list_odr_odrd = range(400640,log['trials'][-1]+1,1280)
+    #trial_list_antisacc = range(0,102400+1,1280)
+    #trial_list_all = range(log['trials'][0],log['trials'][-1]+1,1280)
 
     #print_basic_info(hp,log,model_dir,smooth_growth=True,smooth_window=5)
+    trial_selected = print_basic_info(hp,log,model_dir,smooth_growth=True,smooth_window=5,\
+        avr_window=9,perf_margin=0.05,max_trial_num_limit=50,auto_range_select=True)
 
     print("compute H")
-    #gen_task_info(hp,log,model_dir,['odr','odrd'],) #only generate task_info.pkl
+    gen_task_info(hp,log,model_dir,['odr','odrd'],) #only generate task_info.pkl
+    compute_H(hp,log,model_dir,  rules=['odr','odrd'], trial_list=trial_selected, recompute=recompute,)
     #compute_H(hp,log,model_dir,  rules=['odr','odrd'], trial_list=trial_list_odr_odrd, recompute=recompute,)
     #compute_H(hp,log,model_dir,  rules=['overlap','zero_gap','gap'], trial_list=trial_list_antisacc, recompute=recompute,)
 
     print("Generate Info")
+    generate_neuron_info(hp,model_dir,epochs=['stim1','delay1'],trial_list=trial_selected,rules=['odr','odrd'],recompute = False,)
+    generate_neuron_info(hp,model_dir,epochs=['delay2'],trial_list=trial_selected,rules=['odrd'],recompute = False,)
     #generate_neuron_info(hp,model_dir,epochs=['stim1','delay1'],trial_list=trial_list_odr_odrd,rules=['odr','odrd'],recompute = False,)
     #generate_neuron_info(hp,model_dir,epochs=['delay2'],trial_list=trial_list_odr_odrd,rules=['odrd'],recompute = False,)
     #generate_neuron_info(hp,model_dir,epochs=['stim1'],trial_list=trial_list_antisacc,rules=['overlap','zero_gap','gap'],recompute = False,)
@@ -49,6 +57,11 @@ if __name__ == "__main__":
     print('\n\nPlot')
 ##########################################################################
 ##########################################################################
+    tunning_analysis(hp,log,model_dir,'odr','stim1',trial_selected)
+    tunning_analysis(hp,log,model_dir,'odr','delay1',trial_selected)
+    tunning_analysis(hp,log,model_dir,'odrd','stim1',trial_selected)
+    tunning_analysis(hp,log,model_dir,'odrd','delay2',trial_selected)
+
     #tunning_analysis(hp,log,model_dir,'odr','stim1',trial_list_odr_odrd)
     #tunning_analysis(hp,log,model_dir,'odr','delay1',trial_list_odr_odrd)
     #tunning_analysis(hp,log,model_dir,'odrd','stim1',trial_list_odr_odrd)
@@ -58,6 +71,12 @@ if __name__ == "__main__":
     #tunning_analysis(hp,log,model_dir,'zero_gap','stim1',trial_list_antisacc)
 
 #######################################################
+    plot_PSTH(hp, log, model_dir, 'odr', 'stim1', trial_selected, plot_oppo_dir = False)
+    plot_PSTH(hp, log, model_dir, 'odr', 'delay1', trial_selected, plot_oppo_dir = False)
+    plot_PSTH(hp, log, model_dir, 'odrd', 'stim1', trial_selected, plot_oppo_dir = True)
+    plot_PSTH(hp, log, model_dir, 'odrd', 'delay1', trial_selected, plot_oppo_dir = True)
+    plot_PSTH(hp, log, model_dir, 'odrd', 'delay2', trial_selected, plot_oppo_dir = True)
+
     #plot_PSTH(hp, log, model_dir, 'odr', 'stim1', trial_list_odr_odrd, plot_oppo_dir = False)
     #plot_PSTH(hp, log, model_dir, 'odr', 'delay1', trial_list_odr_odrd, plot_oppo_dir = False)
     #plot_PSTH(hp, log, model_dir, 'odrd', 'stim1', trial_list_odr_odrd, plot_oppo_dir = True)
