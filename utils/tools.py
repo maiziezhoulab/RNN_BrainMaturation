@@ -220,3 +220,84 @@ def gen_ortho_matrix(dim, rng=None):
         mat[n-1:, n-1:] = Hx
         H = np.dot(H, mat)
     return H
+
+def smooth(ori_array, smooth_window,):
+    '''smooth window should be an odd number'''
+    '''
+    smoothed_array = list()
+    half_wlen = smooth_window//2
+
+    for i in range(half_wlen):
+        smoothed_array.append(ori_array[i])
+    
+    for i in range(half_wlen, len(ori_array)-half_wlen):
+        avg = np.mean(ori_array[i-half_wlen:i+half_wlen+1])
+        smoothed_array.append(avg)
+
+    for i in range(len(ori_array)-half_wlen, len(ori_array)):
+        smoothed_array.append(ori_array[i])
+
+    return smoothed_array
+    '''
+    padd_array = list()
+    smoothed_array = list()
+    #half_wlen = smooth_window//2
+
+    #for i in range(half_wlen):
+    #    padd_array.append(ori_array[0])
+    #padd_array = padd_array+list(ori_array)
+
+    #for i in range(half_wlen):
+    #    padd_array.append(ori_array[-1])
+
+
+    #for i in range(half_wlen,half_wlen+len(ori_array)):
+    for i in range(len(ori_array)):    
+        #start = max(0,i-half_wlen)
+        #end = min(len(log['trials']),i+half_wlen+1)
+        
+        #avg = np.mean(ori_array[i-half_wlen:i+half_wlen+1])
+        avg = np.mean(ori_array[i:i+smooth_window+1])
+        smoothed_array.append(avg)
+    
+    return smoothed_array
+
+def range_auto_select(hp,log,growth_curve,avr_window=9,perf_margin=0.05,max_trial_num_limit=30):
+    #half_wlen = avr_window//2
+
+    trial_select = dict()
+    for key in ['mature','mid','early']:
+        trial_select[key] = list()
+
+    avr_growth_curve = smooth(growth_curve, smooth_window=avr_window,)
+
+    for i in range(len(avr_growth_curve)):
+        #trial_start = max(0,i-half_wlen)
+        #trial_end = min(len(log['trials']),i+half_wlen+1)
+        if hp['early_target_perf']-perf_margin <= avr_growth_curve[i] <= hp['early_target_perf']+perf_margin:
+            #trial_select['early']+=log['trials'][trial_start:trial_end]
+            trial_select['early']+=log['trials'][i:i+avr_window+1]
+        elif hp['mid_target_perf']-perf_margin <= avr_growth_curve[i] <= hp['mid_target_perf']+perf_margin:
+        #elif 0.7-perf_margin <= avr_growth_curve[i] <= 0.7+perf_margin:
+            #trial_select['mid']+=log['trials'][trial_start:trial_end]
+            trial_select['mid']+=log['trials'][i:i+avr_window+1]
+        elif hp['mature_target_perf']-perf_margin <= avr_growth_curve[i]:
+            #trial_select['mature']+=log['trials'][trial_start:trial_end]
+            trial_select['mature']+=log['trials'][i:i+avr_window+1]
+        else:
+            continue
+
+    for key,value in trial_select.items():
+        trial_select[key] = sorted(set(value))
+    
+    if len(trial_select['early'])>max_trial_num_limit:
+        trial_select['early'] = trial_select['early'][-max_trial_num_limit:]
+    if len(trial_select['mid'])>max_trial_num_limit:
+        exee = len(trial_select['mid'])-max_trial_num_limit
+        trial_select['mid'] = trial_select['mid'][int(exee//2):-int(exee//2)]
+    if len(trial_select['mature'])>max_trial_num_limit:
+        trial_select['mature'] = trial_select['mature'][:max_trial_num_limit]
+
+    return trial_select
+
+    
