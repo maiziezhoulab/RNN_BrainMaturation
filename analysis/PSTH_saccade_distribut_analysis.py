@@ -58,7 +58,19 @@ def saccade_distribut_analysis(hp,log,rule,model_dir,trial_list,):
     mid_saccade_dir = list()
     mature_saccade_dir = list()
 
-    for trial_num in trial_list:
+    is_dict = False
+    is_list = False
+    if isinstance(trial_list, dict):
+        temp_list = list()
+        is_dict = True
+        for value in trial_list[rule].values():
+            temp_list += value
+        temp_list = sorted(set(temp_list))
+    elif isinstance(trial_list, list):
+        temp_list = trial_list
+        is_list = True
+
+    for trial_num in temp_list:
 
         saccade_dir_temp= list()
 
@@ -75,12 +87,12 @@ def saccade_distribut_analysis(hp,log,rule,model_dir,trial_list,):
                 saccade_dir_temp += dist
 
         matur = log['perf_'+rule][trial_num//log['trials'][1]]
-        if matur<=hp['early_target_perf']:
-            early_saccade_dir += saccade_dir_temp
-        elif matur<=hp['mid_target_perf']:
-            mid_saccade_dir += saccade_dir_temp
-        else:
+        if (is_list and matur > hp['mid_target_perf']) or (is_dict and trial_num in trial_list[rule]['mature']):
             mature_saccade_dir += saccade_dir_temp
+        elif (is_list and matur > hp['early_target_perf']) or (is_dict and trial_num in trial_list[rule]['mid']):
+            mid_saccade_dir += saccade_dir_temp
+        elif is_list or (is_dict and trial_num in trial_list[rule]['early']):
+            early_saccade_dir += saccade_dir_temp
 
 
     fig,axes = plt.subplots(1,3,figsize=(18,6))

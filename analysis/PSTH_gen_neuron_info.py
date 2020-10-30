@@ -29,7 +29,13 @@ def generate_neuron_info(
         task_info = pickle.load(tinf)
 
     for rule in rules:
-
+        if isinstance(trial_list, dict):
+            temp_list = list()
+            for value in trial_list[rule].values():
+                temp_list += value
+            temp_list = sorted(set(temp_list))
+        elif isinstance(trial_list, list):
+            temp_list = trial_list
 
         for epoch in epochs:
             if verbose:
@@ -37,10 +43,10 @@ def generate_neuron_info(
 
             count = 0
 
-            for trial_num in trial_list:
+            for trial_num in temp_list:
 
                 count+=1
-                process = count/len(trial_list)*100
+                process = count/len(temp_list)*100
                 if verbose:
                     print ("\r processing... %.1f%%"%(process), end="",flush=True)
 
@@ -67,9 +73,6 @@ def generate_neuron_info(
                     paired_ttest_count = 0
 
                     for loc in task_info[rule]['in_loc_set']:
-                        #axis = 1 for trial-wise mean, 0 for time-wise mean
-                        #paired T test
-                        #TODO:put the paired t-test in the outer(rule) for loop 
 
                         fix_level = H[task_info[rule]['epoch_info']['fix1'][0]:task_info[rule]['epoch_info']['fix1'][1],\
                             task_info[rule]['in_loc'] == loc, neuron].mean(axis=0)
@@ -118,12 +121,6 @@ def generate_neuron_info(
 
                 neuron_info['firerate_loc_order'] = \
                     np.array(neuron_info['firerate_loc_order'])
-
-            #if len(trial_list) == 1:
-                #save_name = model_dir+'/neuron_info_'+rule+'_'+epoch+'_'+str(trial_list[0])+'.pkl'
-            #else:
-                #save_name = model_dir+'/neuron_info_'+rule+'_'+epoch+'_'+\
-                    #str(trial_list[0])+'_'+str(trial_list[-1])+'_step'+str(trial_list[1]-trial_list[0])+'.pkl'
 
                 with open(save_name,'wb') as inf:
                     pickle.dump(neuron_info,inf)

@@ -19,7 +19,19 @@ def sample_neuron_by_trial(hp,log,model_dir,rule,epoch,trial_list,n_type,):
     save_root_folder = 'figure/figure_'+model_dir.rstrip('/').split('/')[-1]+'/'+rule+'/'+epoch+'/sample_neuron/'
     tools.mkdir_p(save_root_folder)
 
-    for trial_num in trial_list:
+    is_dict = False
+    is_list = False
+    if isinstance(trial_list, dict):
+        temp_list = list()
+        is_dict = True
+        for value in trial_list[rule].values():
+            temp_list += value
+        temp_list = sorted(set(temp_list))
+    elif isinstance(trial_list, list):
+        temp_list = trial_list
+        is_list = True
+
+    for trial_num in temp_list:
         H = Get_H(hp,model_dir,trial_num,rule,save_H=False,task_mode='test',)
 
         with open(model_dir+'/'+str(trial_num)+'/neuron_info_'+rule+'_'+epoch+'.pkl','rb') as inf:
@@ -31,15 +43,15 @@ def sample_neuron_by_trial(hp,log,model_dir,rule,epoch,trial_list,n_type,):
         #sample_n:(neuron,p,sel_dir)
 
         perf = log['perf_'+rule][trial_num//log['trials'][1]]
-        if perf<=hp['early_target_perf']:
-            color = 'green'
-            save_folder = save_root_folder+str(trial_num)+'early/'+n_type+'/'
-        elif perf<=hp['mid_target_perf']:
-            color = 'blue'
-            save_folder = save_root_folder+str(trial_num)+'mid/'+n_type+'/'
-        else:
+        if (is_list and perf > hp['mid_target_perf']) or (is_dict and trial_num in trial_list[rule]['mature']):
             color = 'red'
             save_folder = save_root_folder+str(trial_num)+'mature/'+n_type+'/'
+        elif (is_list and perf > hp['early_target_perf']) or (is_dict and trial_num in trial_list[rule]['mid']):
+            color = 'blue'
+            save_folder = save_root_folder+str(trial_num)+'mid/'+n_type+'/'
+        elif is_list or (is_dict and trial_num in trial_list[rule]['early']):
+            color = 'green'
+            save_folder = save_root_folder+str(trial_num)+'early/'+n_type+'/'
 
         tools.mkdir_p(save_folder)
 

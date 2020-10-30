@@ -56,15 +56,27 @@ def tunning_analysis(
     tuning_store = dict()
     info_store = dict()
     height_store = dict()
+
+    is_dict = False
+    is_list = False
+    if isinstance(trial_list, dict):
+        temp_list = list()
+        is_dict = True
+        for value in trial_list[rule].values():
+            temp_list += value
+        temp_list = sorted(set(temp_list))
+    elif isinstance(trial_list, list):
+        temp_list = trial_list
+        is_list = True
     
-    for trial_num in trial_list:
+    for trial_num in temp_list:
         growth = log['perf_'+rule][trial_num//log['trials'][1]]
-        if growth <= hp['early_target_perf']:
-            mature_key = "early"
-        elif growth <= hp['mid_target_perf']:
-            mature_key = "mid"
-        else:
+        if (is_list and growth > hp['mid_target_perf']) or (is_dict and trial_num in trial_list[rule]['mature']):
             mature_key = "mature"
+        elif (is_list and growth > hp['early_target_perf']) or (is_dict and trial_num in trial_list[rule]['mid']):
+            mature_key = "mid"
+        elif is_list or (is_dict and trial_num in trial_list[rule]['early']):
+            mature_key = "early"
 
         if mature_key not in tuning_store:
             tuning_store[mature_key] = list()
@@ -100,11 +112,15 @@ def tunning_analysis(
 
     fig,ax = plt.subplots(figsize=(16,10))
 
-    if len(trial_list) == 1:
+    if is_dict or len(temp_list) == 1:
         step = 'None'
     else:
-        step = str(trial_list[1]-trial_list[0])
-    trial_range = str((trial_list[0],trial_list[-1]))
+        step = str(temp_list[1]-temp_list[0])
+
+    if is_dict:
+        trial_range = 'auto_choose'
+    else:
+        trial_range = str((temp_list[0],temp_list[-1]))
     title = 'Rule:'+rule+' Epoch:'+epoch+' trial range:'+trial_range+' step:'+step
 
     for mature_key in tuning_store.keys():
@@ -123,7 +139,7 @@ def tunning_analysis(
         avg_growth = np.array([x[1] for x in info_store[mature_key]]).mean()
 
         ax.scatter(temp_x, temp_tuning, marker = '+',color = color, s = 70 ,\
-                                label = mature_key+' avg_n_num(int):'+str(avg_n_number)+' avg_growth:%.1f'%(avg_growth))
+                                label = mature_key+' avg_n_num(int):'+str(avg_n_number)+' avg_growth:%.2f'%(avg_growth))
 
         if gaussion_fit:
             gaussian_x = np.arange(-0.1,len(temp_tuning)-0.9,0.1)

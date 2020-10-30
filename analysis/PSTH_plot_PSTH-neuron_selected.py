@@ -27,8 +27,16 @@ def gen_PSTH_log_neuron_selected(
     print('\tGenerating PSTH '+rule+' '+seltive_epoch)
 
     count = 0
+
+    if isinstance(trial_list, dict):
+        temp_list = list()
+        for value in trial_list[rule].values():
+            temp_list += value
+        temp_list = sorted(set(temp_list))
+    elif isinstance(trial_list, list):
+        temp_list = trial_list
     
-    for trial_num in trial_list:
+    for trial_num in temp_list:
         
         H_file = model_dir+'/'+str(trial_num)+'/H_'+rule+'.pkl'
         with open(H_file,'rb') as hf:
@@ -77,7 +85,7 @@ def gen_PSTH_log_neuron_selected(
             pass
 
         count+=1
-        process = count/len(trial_list)*100
+        process = count/len(temp_list)*100
         print ("\r\t processing... %.1f%%"%(process), end="",flush=True)
 
     print('\n\tfinish')
@@ -100,8 +108,20 @@ def plot_PSTH_neuron_selected(hp,
     print("Start ploting neuron selected PSTH")
     print("\trule: "+rule+" selective epoch: "+epoch)
 
+    is_dict = False
+    is_list = False
+    if isinstance(trial_list, dict):
+        temp_list = list()
+        is_dict = True
+        for value in trial_list[rule].values():
+            temp_list += value
+        temp_list = sorted(set(temp_list))
+    elif isinstance(trial_list, list):
+        temp_list = trial_list
+        is_list = True
+
     if selected_n_list is None:
-        n_info_file = model_dir+'/'+str(trial_list[-1])+'/neuron_info_'+rule+'_'+epoch+'.pkl'
+        n_info_file = model_dir+'/'+str(temp_list[-1])+'/neuron_info_'+rule+'_'+epoch+'.pkl'
         with open(n_info_file,'rb') as ninf:
             n_info = pickle.load(ninf)
 
@@ -111,7 +131,7 @@ def plot_PSTH_neuron_selected(hp,
 
         selected_n_list = [n[0] for n in n_list]
 
-    for trial_num in trial_list:
+    for trial_num in temp_list:
         n_info_file = model_dir+'/'+str(trial_num)+'/neuron_info_'+rule+'_'+epoch+'.pkl'
         with open(n_info_file,'rb') as ninf:
             n_info = pickle.load(ninf)
@@ -152,15 +172,15 @@ def plot_PSTH_neuron_selected(hp,
         for data_type in data_types:
             data_to_plot[m_key][data_type] = list()
     
-    for trial_num in trial_list:
+    for trial_num in temp_list:
         growth = log['perf_'+rule][trial_num//log['trials'][1]]
 
-        if growth <= hp['early_target_perf']:
-            m_key = "early"
-        elif growth <= hp['mid_target_perf']:
-            m_key = "mid"
-        else:
+        if (is_list and growth > hp['mid_target_perf']) or (is_dict and trial_num in trial_list[rule]['mature']):
             m_key = "mature"
+        elif (is_list and growth > hp['early_target_perf']) or (is_dict and trial_num in trial_list[rule]['mid']):
+            m_key = "mid"
+        elif is_list or (is_dict and trial_num in trial_list[rule]['early']):
+            m_key = "early"
 
         data_to_plot[m_key]["PSTH"].append(PSTH_log[trial_num])
         data_to_plot[m_key]["growth"].append(growth)
@@ -174,11 +194,15 @@ def plot_PSTH_neuron_selected(hp,
 
     # plot #
     save_path = 'figure/figure_'+model_dir.rstrip('/').split('/')[-1]+'/'+rule+'/'+epoch+'/'
-    if len(trial_list) == 1:
+    if is_dict or len(temp_list) == 1:
         step = 'None'
     else:
-        step = str(trial_list[1]-trial_list[0])
-    trial_range = str((trial_list[0],trial_list[-1]))
+        step = str(temp_list[1]-temp_list[0])
+
+    if is_dict:
+        trial_range = 'auto_choose'
+    else:
+        trial_range = str((temp_list[0],temp_list[-1]))
     title = 'Rule:'+rule+' Epoch:'+epoch+' trial range:'+trial_range+' step:'+step
 
     colors = {"early":"green","mid":"blue","mature":"red",}

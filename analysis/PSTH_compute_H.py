@@ -80,16 +80,23 @@ def compute_H(
     else:
         rules = hp['rule_trains']
         
-    if trial_list is not None:
-        trial_list = trial_list
-    else:
+    if trial_list is None:
         trial_list = log['trials']
+    elif isinstance(trial_list, list):
+        trial_list = trial_list   
 
     trial_store = gen_task_info(hp,log,model_dir,rules,True,)
 
     for rule in rules:
+        if isinstance(trial_list, dict):
+            temp_list = list()
+            for value in trial_list[rule].values():
+                temp_list += value
+            temp_list = sorted(set(temp_list))
+        elif isinstance(trial_list, list):
+            temp_list = trial_list
 
-        for trial_num in trial_list:
+        for trial_num in temp_list:
             H_file = model_dir+'/'+str(trial_num)+'/H_'+rule+'.pkl'
             if recompute or not os.path.isfile(H_file):
                 H_ = compute_H_(hp, model_dir, rule, trial_num, trial = trial_store[rule])

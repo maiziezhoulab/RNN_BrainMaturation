@@ -66,7 +66,19 @@ def odrd_distractor_analysis(hp,log,model_dir,trial_list,):
         mid_saccade_dir[d] = list()
         mature_saccade_dir[d] = list()
 
-    for trial_num in trial_list:
+    is_dict = False
+    is_list = False
+    if isinstance(trial_list, dict):
+        temp_list = list()
+        is_dict = True
+        for value in trial_list['odrd'].values():
+            temp_list += value
+        temp_list = sorted(set(temp_list))
+    elif isinstance(trial_list, list):
+        temp_list = trial_list
+        is_list = True
+
+    for trial_num in temp_list:
 
         saccade_dir_temp= dict()
         for d in range(hp['n_eachring']//2+1):
@@ -97,18 +109,18 @@ def odrd_distractor_analysis(hp,log,model_dir,trial_list,):
             temp_pref_list[-1] /= 2
 
         matur = log['perf_odrd'][trial_num//log['trials'][1]]
-        if matur<=hp['early_target_perf']:
-            early_record.append(temp_pref_list)
-            for key,value in saccade_dir_temp.items():
-                early_saccade_dir[key] += value
-        elif matur<=hp['mid_target_perf']:
-            mid_record.append(temp_pref_list)
-            for key,value in saccade_dir_temp.items():
-                mid_saccade_dir[key] += value
-        else:
+        if (is_list and matur > hp['mid_target_perf']) or (is_dict and trial_num in trial_list['odrd']['mature']):
             mature_record.append(temp_pref_list)
             for key,value in saccade_dir_temp.items():
                 mature_saccade_dir[key] += value
+        elif (is_list and matur > hp['early_target_perf']) or (is_dict and trial_num in trial_list['odrd']['mid']):
+            mid_record.append(temp_pref_list)
+            for key,value in saccade_dir_temp.items():
+                mid_saccade_dir[key] += value
+        elif is_list or (is_dict and trial_num in trial_list['odrd']['early']):
+            early_record.append(temp_pref_list)
+            for key,value in saccade_dir_temp.items():
+                early_saccade_dir[key] += value
 
     early_trial_count = len(early_record)
     mid_trial_count = len(mid_record)

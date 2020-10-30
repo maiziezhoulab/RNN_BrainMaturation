@@ -46,19 +46,30 @@ def neuron_period_activity_analysis(hp,
     else:
         raise ValueError('Wrong analy_epoch format!')
 
+    is_dict = False
+    is_list = False
+    if isinstance(trial_list, dict):
+        temp_list = list()
+        is_dict = True
+        for value in trial_list[rule].values():
+            temp_list += value
+        temp_list = sorted(set(temp_list))
+    elif isinstance(trial_list, list):
+        temp_list = trial_list
+        is_list = True
 
     
     trial_sort_by_matur = dict()
     fire_rate_dict = dict()
 
-    for trial_num in trial_list:
+    for trial_num in temp_list:
         growth = log['perf_'+rule][trial_num//log['trials'][1]]
-        if growth <= hp['early_target_perf']:
-            mature = 'early'
-        elif growth <= hp['mid_target_perf']:
-            mature = 'mid'
-        else:
+        if (is_list and growth > hp['mid_target_perf']) or (is_dict and trial_num in trial_list[rule]['mature']):
             mature = 'mature'
+        elif (is_list and growth > hp['early_target_perf']) or (is_dict and trial_num in trial_list[rule]['mid']):
+            mature = 'mid'
+        elif is_list or (is_dict and trial_num in trial_list[rule]['early']):
+            mature = 'early'
         
         if mature not in trial_sort_by_matur:
             trial_sort_by_matur[mature] = list()

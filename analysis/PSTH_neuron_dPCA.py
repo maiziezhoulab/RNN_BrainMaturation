@@ -5,7 +5,7 @@ import pickle
 
 import sys
 sys.path.append('.')
-from utils.tools import mkdir_p
+from utils.tools import mkdir_p, smooth
 
 # plot #
 from matplotlib import pyplot as plt
@@ -14,7 +14,6 @@ from matplotlib import pyplot as plt
 from dPCA import dPCA
 
 from .PSTH_compute_H import Get_H
-from .PSTH_print_basic_info import smooth
 
 def neuron_dPCA(hp,
                 log,

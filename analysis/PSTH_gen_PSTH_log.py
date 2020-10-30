@@ -1,5 +1,6 @@
 # basic packages #
 import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1'
 import numpy as np
 import pickle
 
@@ -23,7 +24,15 @@ def gen_PSTH_log(
     print('\tGenerating PSTH '+rule+' '+seltive_epoch)
 
     count = 0
-    for trial_num in trial_list:
+    if isinstance(trial_list, dict):
+        temp_list = list()
+        for value in trial_list[rule].values():
+            temp_list += value
+        temp_list = sorted(set(temp_list))
+    elif isinstance(trial_list, list):
+        temp_list = trial_list
+
+    for trial_num in temp_list:
         
         H = Get_H(hp,model_dir,trial_num,rule,save_H=False,task_mode='test',)
 
@@ -71,7 +80,7 @@ def gen_PSTH_log(
             pass
 
         count+=1
-        process = count/len(trial_list)*100
+        process = count/len(temp_list)*100
         print ("\r\t processing... %.1f%%"%(process), end="",flush=True)
 
     print('\n\tfinish')
