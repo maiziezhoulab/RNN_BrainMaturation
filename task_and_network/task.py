@@ -379,7 +379,7 @@ def odr15000(config, mode, **kwargs):
 # add by yichen
 
 def odrd_(config, mode, **kwargs):
-    '''use test-x-y to control the cue/stim(x), and distractor(y) if you want to specifiy their location'''
+    #use test-x-y to control the cue/stim(x), and distractor(y) if you want to specifiy their location
 
     dt = config['dt']
     rng = config['rng']
@@ -648,7 +648,7 @@ def match_or_non_(config, mode, easy_task, passive, **kwargs):
         if easy_task:
             upper_choice = np.zeros_like(match_choice)
             lower_choice = np.ones_like(match_choice)*np.pi
-            '''upper is match,lower is nonmatch'''
+            #upper is match,lower is nonmatch
         else:
             upper_choice = match_choice*3/2*np.pi + 1/4*np.pi
             lower_choice = (upper_choice + np.pi)%(2*np.pi)
@@ -683,20 +683,20 @@ def match_or_non_(config, mode, easy_task, passive, **kwargs):
         ind_stim_loc, _ = np.unravel_index(range(batch_size),batch_shape)
 
         stim1_locs  = 2*np.pi*ind_stim_loc/n_stim_loc
-        '''
-        match_or_not = rng.randint(0,2,len(stim1_locs))
-        devi_dist = rng.randint(1,config['n_eachring'])*(2*np.pi/config['n_eachring'])
-        '''
+        
+        #match_or_not = rng.randint(0,2,len(stim1_locs))
+        #devi_dist = rng.randint(1,config['n_eachring'])*(2*np.pi/config['n_eachring'])
+        
         match_or_not = np.unravel_index(range(batch_size),(config['n_eachring']*2,8))[0]%2
         devi_dist = np.pi
 
         stim2_locs = (stim1_locs + devi_dist*match_or_not)%(2*np.pi)
 
-        match_choice = np.random.randint(0,2,batch_size)  ###############################################################################
+        match_choice = np.random.randint(0,2,batch_size)  ###########
         if easy_task:
             upper_choice = np.zeros_like(match_choice)
             lower_choice = np.ones_like(match_choice)*np.pi
-            '''upper is match,lower is nonmatch'''
+            #upper is match,lower is nonmatch#
         else:
             upper_choice = match_choice*3/2*np.pi + 1/4*np.pi
             lower_choice = (upper_choice + np.pi)%(2*np.pi)

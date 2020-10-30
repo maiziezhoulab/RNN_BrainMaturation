@@ -768,7 +768,7 @@ class Model(object):
         sess = tf.get_default_session()
         save_path = os.path.join(modeldir, 'model.ckpt')#modified by yichen
         self.saver.save(sess, save_path)
-#        print("Model saved in file: %s" % save_path)
+        print("Model saved in file: %s" % save_path)
 
     def set_optimizer(self, extra_cost=None, var_list=None):
         """Recompute the optimizer to reflect the latest cost function.
