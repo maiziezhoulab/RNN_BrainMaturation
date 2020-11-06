@@ -38,6 +38,9 @@ def print_basic_info(hp,log,model_dir,smooth_growth=True,smooth_window=5,auto_ra
         ################################################################
 
     tools.mkdir_p('figure/figure_'+model_dir.rstrip('/').split('/')[-1]+'/')
+
+    plt.xlabel("trial trained")
+    plt.ylabel("perf")
     plt.legend(bbox_to_anchor=(1.05, 0), loc=3, borderaxespad=0)
     plt.title('Growth of Performance')
     save_name = 'figure/figure_'+model_dir.rstrip('/').split('/')[-1]+'/growth_of_performance'

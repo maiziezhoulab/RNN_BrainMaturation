@@ -146,6 +146,8 @@ def odrd_distractor_analysis(hp,log,model_dir,trial_list,):
     except:
         pass
     ax.set_xticks(abs_dist_list)
+    ax.set_ylabel("perf")
+    ax.set_xlabel("distance between distractor and stim1 ($\\times$%.1f$\degree$)"%(360/hp['n_eachring']))
     ax.legend()
 
     save_folder = 'figure/figure_'+model_dir.rstrip('/').split('/')[-1]+'/odrd/'
@@ -165,6 +167,8 @@ def odrd_distractor_analysis(hp,log,model_dir,trial_list,):
         axes[1].set_title("mid")
         axes[2].hist(mature_saccade_dir[d],bins=30,range=(0,180), histtype="stepfilled",alpha=0.6, color="red")
         axes[2].set_title("mature")
+        for i in range(3):
+            axes[i].set_xlabel("distance to stim1($\degree$)")
         fig.suptitle("distractor distance: "+str(d))
 
         save_pic = save_folder+'saccade_distribut_analysis_by_growth_dis_'+str(d)

@@ -122,6 +122,8 @@ def plot_PSTH(
             ax.plot(np.arange(len(data_to_plot[m_key]["PSTH_oppo"]))*hp['dt']/1000, data_to_plot[m_key]["PSTH_oppo"],\
                 label= m_key+'_opposite_sel_dir', color=colors[m_key], linestyle = '--')
     
+    ax.set_xlabel("time/s")
+    ax.set_ylabel("activity")
     ax.legend(bbox_to_anchor=(1.05, 0), loc=3, borderaxespad=0)
 
     mkdir_p(save_path)

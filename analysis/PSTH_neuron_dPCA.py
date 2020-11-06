@@ -95,7 +95,17 @@ def neuron_dPCA(hp,
     if invert_stcomp_y:
         axes[2].invert_yaxis()
     axes[2].legend()
-    plt.show()
+    #plt.show()
+
+    for i in range(3):
+        axes[i].set_xlabel("time/s")
+    
+    save_name = 'figure/RNNneuron_dPCA_rule_'+rule+'_trialnum_'+str(trial_num)
+    if appoint_loc_analysis:
+        save_name = save_name+'_locs_'+str(appoint_locs)
+    plt.savefig(save_name+'.pdf',bbox_inches='tight')
+    plt.close()
+
 
 def real_neuron_dPCA(neuron_file='data/adultFiringRate8trials.txt',
                     time_len=176,
@@ -183,4 +193,7 @@ def real_neuron_dPCA(neuron_file='data/adultFiringRate8trials.txt',
     if invert_stcomp_y:
         axes[2].invert_yaxis()
     axes[2].legend()
-    plt.show()
+    #plt.show()
+    sample_name = neuron_file.split('/')[-1].split('.')[0]
+    plt.savefig('figure/realneuron_dPCA_'+sample_name+'.pdf',bbox_inches='tight')
+    plt.close()

@@ -56,6 +56,8 @@ def plot_epoch_mean_growth(hp,
         mean_value = PSTH_log[trial_num][:,task_info[rule]['epoch_info'][analy_epoch][0]:task_info[rule]['epoch_info'][analy_epoch][1]].mean()
 
         ax.scatter(trial_num, mean_value, marker = '+',color = color)
+    ax.set_xlabel("trial trained")
+    ax.set_ylabel("mean activity")
     plt.savefig(save_path+analy_epoch+'_epoch_mean_growth.png')
     plt.savefig(save_path+analy_epoch+'_epoch_mean_growth.pdf')
 

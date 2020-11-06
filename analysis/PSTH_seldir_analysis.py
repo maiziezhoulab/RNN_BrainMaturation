@@ -63,6 +63,8 @@ def seldir_analysis(
     ax.plot(trial_list,plot_dic['diffdir'],label = 'different selective direction')
 
     ax.legend()
+    ax.set_xlabel('trial trained')
+    ax.set_ylabel('neuron number')
 
     plt.savefig('figure/figure_'+model_dir.rstrip('/').split('/')[-1]+'/'+rule1+'_'+epoch1+'_'+rule2+'_'+epoch2+'_'.join(n_types)+'_seldir_analysis'+'.pdf')
     plt.savefig('figure/figure_'+model_dir.rstrip('/').split('/')[-1]+'/'+rule1+'_'+epoch1+'_'+rule2+'_'+epoch2+'_'.join(n_types)+'_seldir_analysis'+'.png')

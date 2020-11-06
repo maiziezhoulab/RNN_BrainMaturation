@@ -161,6 +161,8 @@ def tunning_analysis(
 
     fig.suptitle(title)
     ax.legend(bbox_to_anchor=(1.05, 0), loc=3, borderaxespad=0)
+    ax.set_ylabel('activity')
+    #ax.set_xlabel('loc')
 
     save_path = 'figure/figure_'+model_dir.rstrip('/').split('/')[-1]+'/'+rule+'/'+epoch+'/'+'_'.join(n_types)+'/'
     mkdir_p(save_path)

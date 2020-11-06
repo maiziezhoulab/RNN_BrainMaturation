@@ -112,9 +112,11 @@ def neuron_period_activity_analysis(hp,
         axes[0].hist(fire_rate,bins=int(max(fire_rate)/bin_wid)+1,histtype="step",alpha=0.6,\
             color=colors[mature],label=mature+' mean:%.3f'%(np.mean(fire_rate)),density=1)
     axes[0].legend()
+    axes[0].set_xlabel("activity")
 
     m_keys = list(fire_rate_dict.keys())
     axes[1].boxplot([fire_rate_dict[m_key] for m_key in m_keys], labels = m_keys)
+    axes[1].set_ylabel("activity")
 
     fig.suptitle("rule: "+rule+" selective epoch: "+seltive_epoch+" analysis epoch: "+str(analy_epoch)+\
         "\n p value: %.3e"%(p)+" group df: %.1f"%(df_g)+" residual df: %.1f"%(df_res))

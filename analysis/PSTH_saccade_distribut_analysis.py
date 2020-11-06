@@ -102,6 +102,8 @@ def saccade_distribut_analysis(hp,log,rule,model_dir,trial_list,):
     axes[1].set_title("mid")
     axes[2].hist(mature_saccade_dir,bins=30,range=(0,180), histtype="stepfilled",alpha=0.6, color="red")
     axes[2].set_title("mature")
+    for i in range(3):
+        axes[i].set_xlabel("distance to stim1($\degree$)")
     fig.suptitle("saccade distribut analysis")
 
     save_folder = 'figure/figure_'+model_dir.rstrip('/').split('/')[-1]+'/'+rule+'/'

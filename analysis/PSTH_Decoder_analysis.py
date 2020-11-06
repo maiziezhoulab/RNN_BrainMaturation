@@ -196,6 +196,8 @@ def realneuron_Decoder_analysis(neuron_file='data/adultFiringRate8trials.txt',
 
     fig, ax = plt.subplots(figsize=(20,16))
     sns.heatmap(df, annot=False, ax=ax,cmap="rainbow",vmin=0.125, vmax=1)
+    ax.set_xlabel("time/s")
+    ax.set_ylabel("time/s")
 
     sample_name = neuron_file.split('/')[-1].split('.')[0]
     plt.savefig('figure/realneuron_'+sample_name+'_w'+str(window_size*dt)+'ms_s'+str(stride*dt)+'ms_arti_'+str(artifact_trial_num_per_loc)+'_per_loc.pdf',bbox_inches='tight')

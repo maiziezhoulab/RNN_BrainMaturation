@@ -71,6 +71,8 @@ def plot_period_ttest_heatmap(
     print('\tploting')
     fig, ax = plt.subplots(figsize=(40,32))
     sns.heatmap(df, annot=False, ax=ax)
+    ax.set_xlabel("trial number-perf")
+    ax.set_ylabel("trial number-perf")
     plt.savefig(save_path+'rule_'+rule+'_sel_'+seltive_epoch+'_analy_'+analy_epoch+'_heatmap.pdf')
     plt.savefig(save_path+'rule_'+rule+'_sel_'+seltive_epoch+'_analy_'+analy_epoch+'_heatmap.png')
     print('\tfinish')
