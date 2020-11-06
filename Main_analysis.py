@@ -25,7 +25,7 @@ if __name__ == "__main__":
 
     os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
-    model_dir = 'data/6tasks'
+    model_dir = 'data/6tasks-test'
     hp = tools.load_hp(model_dir)
     log = tools.load_log(model_dir)
     
