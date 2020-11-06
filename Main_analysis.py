@@ -25,81 +25,63 @@ if __name__ == "__main__":
 
     os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
-    model_dir = 'data/6tasks-test'
+    model_dir = 'data/6tasks_paper'
     hp = tools.load_hp(model_dir)
     log = tools.load_log(model_dir)
     
     recompute = False
 
-    #trial_list_odr_odrd = range(520960,log['trials'][-1]+1,1280)
-    #trial_list_odr_odrd = range(350720,log['trials'][-1]+1,1280)
-    #trial_list_odr_odrd = range(400640,log['trials'][-1]+1,1280)
-    #trial_list_antisacc = range(0,102400+1,1280)
-    #trial_list_all = range(log['trials'][0],log['trials'][-1]+1,1280)
+    trial_list_odr_odrd = range(520960,log['trials'][-1]+1,1280)
+    trial_list_antisacc = range(0,102400+1,1280)
+    trial_list_all = range(log['trials'][0],log['trials'][-1]+1,1280)
 
-    #print_basic_info(hp,log,model_dir,smooth_growth=True,smooth_window=5)
-    trial_selected = print_basic_info(hp,log,model_dir,smooth_growth=True,smooth_window=5,\
-        avr_window=9,perf_margin=0.05,max_trial_num_limit=50,auto_range_select=True)
+    print_basic_info(hp,log,model_dir,smooth_growth=True,smooth_window=5)
 
     print("compute H")
     gen_task_info(hp,log,model_dir,['odr','odrd'],) #only generate task_info.pkl
-    compute_H(hp,log,model_dir,  rules=['odr','odrd'], trial_list=trial_selected, recompute=recompute,)
     #compute_H(hp,log,model_dir,  rules=['odr','odrd'], trial_list=trial_list_odr_odrd, recompute=recompute,)
     #compute_H(hp,log,model_dir,  rules=['overlap','zero_gap','gap'], trial_list=trial_list_antisacc, recompute=recompute,)
 
     print("Generate Info")
-    generate_neuron_info(hp,model_dir,epochs=['stim1','delay1'],trial_list=trial_selected,rules=['odr','odrd'],recompute = False,)
-    generate_neuron_info(hp,model_dir,epochs=['delay2'],trial_list=trial_selected,rules=['odrd'],recompute = False,)
-    #generate_neuron_info(hp,model_dir,epochs=['stim1','delay1'],trial_list=trial_list_odr_odrd,rules=['odr','odrd'],recompute = False,)
-    #generate_neuron_info(hp,model_dir,epochs=['delay2'],trial_list=trial_list_odr_odrd,rules=['odrd'],recompute = False,)
-    #generate_neuron_info(hp,model_dir,epochs=['stim1'],trial_list=trial_list_antisacc,rules=['overlap','zero_gap','gap'],recompute = False,)
+    generate_neuron_info(hp,model_dir,epochs=['stim1','delay1'],trial_list=trial_list_odr_odrd,rules=['odr','odrd'],recompute = False,)
+    generate_neuron_info(hp,model_dir,epochs=['delay2'],trial_list=trial_list_odr_odrd,rules=['odrd'],recompute = False,)
+    generate_neuron_info(hp,model_dir,epochs=['stim1'],trial_list=trial_list_antisacc,rules=['overlap','zero_gap','gap'],recompute = False,)
 
     print('\n\nPlot')
 ##########################################################################
 ##########################################################################
-    tunning_analysis(hp,log,model_dir,'odr','stim1',trial_selected)
-    tunning_analysis(hp,log,model_dir,'odr','delay1',trial_selected)
-    tunning_analysis(hp,log,model_dir,'odrd','stim1',trial_selected)
-    tunning_analysis(hp,log,model_dir,'odrd','delay2',trial_selected)
-
-    #tunning_analysis(hp,log,model_dir,'odr','stim1',trial_list_odr_odrd)
-    #tunning_analysis(hp,log,model_dir,'odr','delay1',trial_list_odr_odrd)
-    #tunning_analysis(hp,log,model_dir,'odrd','stim1',trial_list_odr_odrd)
-    #tunning_analysis(hp,log,model_dir,'odrd','delay2',trial_list_odr_odrd)
-    #tunning_analysis(hp,log,model_dir,'gap','stim1',trial_list_antisacc)
-    #tunning_analysis(hp,log,model_dir,'overlap','stim1',trial_list_antisacc)
-    #tunning_analysis(hp,log,model_dir,'zero_gap','stim1',trial_list_antisacc)
+    tunning_analysis(hp,log,model_dir,'odr','stim1',trial_list_odr_odrd)
+    tunning_analysis(hp,log,model_dir,'odr','delay1',trial_list_odr_odrd)
+    tunning_analysis(hp,log,model_dir,'odrd','stim1',trial_list_odr_odrd)
+    tunning_analysis(hp,log,model_dir,'odrd','delay2',trial_list_odr_odrd)
+    tunning_analysis(hp,log,model_dir,'gap','stim1',trial_list_antisacc)
+    tunning_analysis(hp,log,model_dir,'overlap','stim1',trial_list_antisacc)
+    tunning_analysis(hp,log,model_dir,'zero_gap','stim1',trial_list_antisacc)
 
 #######################################################
-    plot_PSTH(hp, log, model_dir, 'odr', 'stim1', trial_selected, plot_oppo_dir = False)
-    plot_PSTH(hp, log, model_dir, 'odr', 'delay1', trial_selected, plot_oppo_dir = False)
-    plot_PSTH(hp, log, model_dir, 'odrd', 'stim1', trial_selected, plot_oppo_dir = True)
-    plot_PSTH(hp, log, model_dir, 'odrd', 'delay1', trial_selected, plot_oppo_dir = True)
-    plot_PSTH(hp, log, model_dir, 'odrd', 'delay2', trial_selected, plot_oppo_dir = True)
+    plot_PSTH(hp, log, model_dir, 'odr', 'stim1', trial_list_odr_odrd, plot_oppo_dir = False)
+    plot_PSTH(hp, log, model_dir, 'odr', 'delay1', trial_list_odr_odrd, plot_oppo_dir = False)
+    plot_PSTH(hp, log, model_dir, 'odrd', 'stim1', trial_list_odr_odrd, plot_oppo_dir = True)
+    plot_PSTH(hp, log, model_dir, 'odrd', 'delay1', trial_list_odr_odrd, plot_oppo_dir = True)
+    plot_PSTH(hp, log, model_dir, 'odrd', 'delay2', trial_list_odr_odrd, plot_oppo_dir = True)
 
-    #plot_PSTH(hp, log, model_dir, 'odr', 'stim1', trial_list_odr_odrd, plot_oppo_dir = False)
-    #plot_PSTH(hp, log, model_dir, 'odr', 'delay1', trial_list_odr_odrd, plot_oppo_dir = False)
-    #plot_PSTH(hp, log, model_dir, 'odrd', 'stim1', trial_list_odr_odrd, plot_oppo_dir = True)
-    #plot_PSTH(hp, log, model_dir, 'odrd', 'delay1', trial_list_odr_odrd, plot_oppo_dir = True)
-    #plot_PSTH(hp, log, model_dir, 'odrd', 'delay2', trial_list_odr_odrd, plot_oppo_dir = True)
-
-    #plot_PSTH(hp, log, model_dir, 'gap', 'stim1', trial_list_antisacc, plot_oppo_dir = False)
-    #plot_PSTH(hp, log, model_dir, 'zero_gap', 'stim1', trial_list_antisacc, plot_oppo_dir = False)
-    #plot_PSTH(hp, log, model_dir, 'overlap', 'stim1', trial_list_antisacc, plot_oppo_dir = False)
+    plot_PSTH(hp, log, model_dir, 'gap', 'stim1', trial_list_antisacc, plot_oppo_dir = False)
+    plot_PSTH(hp, log, model_dir, 'zero_gap', 'stim1', trial_list_antisacc, plot_oppo_dir = False)
+    plot_PSTH(hp, log, model_dir, 'overlap', 'stim1', trial_list_antisacc, plot_oppo_dir = False)
 
 ##########################################################################
 ##########################################################################
-    #PSTH_log = gen_PSTH_log(hp,trial_list_all,model_dir,rule = 'odr',seltive_epoch = 'stim1')
-    #plot_epoch_mean_growth(hp,log, trial_list_all, model_dir, rule = 'odr', seltive_epoch = 'stim1', analy_epoch = 'stim1',PSTH_log = PSTH_log)
-    #plot_epoch_mean_growth(hp,log, trial_list_all, model_dir, rule = 'odr', seltive_epoch = 'stim1', analy_epoch = 'delay1',PSTH_log = PSTH_log)
+    PSTH_log = gen_PSTH_log(hp,trial_list_all,model_dir,rule = 'odr',seltive_epoch = 'stim1')
+    plot_epoch_mean_growth(hp,log, trial_list_all, model_dir, rule = 'odr', seltive_epoch = 'stim1', analy_epoch = 'stim1',PSTH_log = PSTH_log)
+    plot_epoch_mean_growth(hp,log, trial_list_all, model_dir, rule = 'odr', seltive_epoch = 'stim1', analy_epoch = 'delay1',PSTH_log = PSTH_log)
 
 ####################################################### 
-    #plot_epoch_mean_growth(hp,log, trial_list_all, model_dir, rule = 'odr', seltive_epoch = 'delay1', analy_epoch = 'delay1',PSTH_log = PSTH_log)
+    plot_epoch_mean_growth(hp,log, trial_list_all, model_dir, rule = 'odr', seltive_epoch = 'delay1', analy_epoch = 'delay1',PSTH_log = PSTH_log)
 
 #######################################################
-    #PSTH_log = gen_PSTH_log(hp,trial_list_all,model_dir,rule = 'odrd',seltive_epoch = 'stim1')
-    #plot_epoch_mean_growth(hp,log, trial_list_all, model_dir, rule = 'odrd', seltive_epoch = 'stim1', analy_epoch = 'stim1',PSTH_log = PSTH_log)
-    #plot_epoch_mean_growth(hp,log, trial_list_all, model_dir, rule = 'odrd', seltive_epoch = 'stim1', analy_epoch = 'delay2',PSTH_log = PSTH_log)
+    PSTH_log = gen_PSTH_log(hp,trial_list_all,model_dir,rule = 'odrd',seltive_epoch = 'stim1')
+    plot_epoch_mean_growth(hp,log, trial_list_all, model_dir, rule = 'odrd', seltive_epoch = 'stim1', analy_epoch = 'stim1',PSTH_log = PSTH_log)
+    plot_epoch_mean_growth(hp,log, trial_list_all, model_dir, rule = 'odrd', seltive_epoch = 'stim1', analy_epoch = 'delay2',PSTH_log = PSTH_log)
 
 
 ##########################################################################
@@ -128,10 +110,10 @@ if __name__ == "__main__":
 
 ##########################################################################
 ##########################################################################
-    #sample_neuron_by_trial(hp,log,model_dir,'odr','stim1',[616960,628480],'mix_neurons')
-    #sample_neuron_by_trial(hp,log,model_dir,'odr','delay1',[616960,628480],'mix_neurons')
-    #sample_neuron_by_trial(hp,log,model_dir,'odrd','stim1',[616960,628480],'mix_neurons')
-    #sample_neuron_by_trial(hp,log,model_dir,'odrd','delay2',[616960,628480],'mix_neurons')
+    sample_neuron_by_trial(hp,log,model_dir,'odr','stim1',[616960,628480],'mix_neurons')
+    sample_neuron_by_trial(hp,log,model_dir,'odr','delay1',[616960,628480],'mix_neurons')
+    sample_neuron_by_trial(hp,log,model_dir,'odrd','stim1',[616960,628480],'mix_neurons')
+    sample_neuron_by_trial(hp,log,model_dir,'odrd','delay2',[616960,628480],'mix_neurons')
 
     #sample_neuron_by_trial(hp,log,model_dir,'odr','stim1',[616960,628480],'exh_neurons')
     #sample_neuron_by_trial(hp,log,model_dir,'odr','delay1',[616960,628480],'exh_neurons')
@@ -140,9 +122,9 @@ if __name__ == "__main__":
 
 ##########################################################################
 ##########################################################################
-    #Decoder_analysis(hp,model_dir,trial_num = log['trials'][-1],window_size=10,test_num=2)
-    #Decoder_analysis(hp,model_dir,trial_num = log['trials'][420],window_size=10,test_num=2)
-    #Decoder_analysis(hp,model_dir,trial_num = log['trials'][452],window_size=10,test_num=2)
+    Decoder_analysis(hp,model_dir,trial_num = log['trials'][-1],window_size=10,test_num=2)
+    Decoder_analysis(hp,model_dir,trial_num = log['trials'][420],window_size=10,test_num=2)
+    Decoder_analysis(hp,model_dir,trial_num = log['trials'][452],window_size=10,test_num=2)
 
     #Decoder_analysis(hp,model_dir,trial_num = log['trials'][-1],window_size=10,test_num=2,rule='odrd',)
     #Decoder_analysis(hp,model_dir,trial_num = log['trials'][468],window_size=10,test_num=2,rule='odrd',)
@@ -150,9 +132,9 @@ if __name__ == "__main__":
 
 ##########################################################################
 ##########################################################################
-    #neuron_dPCA(hp,log,model_dir,trial_num = log['trials'][-1],rule='odr',task_mode='test',invert_tcomp_y=True,)
-    #neuron_dPCA(hp,log,model_dir,trial_num = log['trials'][452],rule='odr',task_mode='test',invert_tcomp_y=True,)
-    #neuron_dPCA(hp,log,model_dir,trial_num = log['trials'][420],rule='odr',task_mode='test',invert_tcomp_y=True,)
+    neuron_dPCA(hp,log,model_dir,trial_num = log['trials'][-1],rule='odr',task_mode='test',invert_tcomp_y=True,)
+    neuron_dPCA(hp,log,model_dir,trial_num = log['trials'][452],rule='odr',task_mode='test',invert_tcomp_y=True,)
+    neuron_dPCA(hp,log,model_dir,trial_num = log['trials'][420],rule='odr',task_mode='test',invert_tcomp_y=True,)
 
     #neuron_dPCA(hp,log,model_dir,trial_num = log['trials'][-1],rule='odrd',task_mode='test',appoint_loc_analysis=True, appoint_locs=[1,5],\
     #    invert_tcomp_y=True,invert_stcomp_y=True,tcomp_ylim=(-12,10),scomp_ylim=(-1,1),stcomp_ylim=(-15,15))#0.95898
