@@ -150,7 +150,7 @@ Most of the analysis in the paper can be reproduced by **Main_analysis.py**. Sim
 **Training_with_diff_HyperParameters.py** contains a set of trainig examples with different hyperparameters (hp) or trained on different rules. Corresponding analysis code can be found in **Analysis_with_diff_HyperParameters.py**. 
 
 ## Cite the Work
-#### Emergence of prefrontal neuron maturation properties by training recurrent neural networks in cognitive tasks. Y. H. Liu, J. Zhu, C. Constantinidis, X. Zhou. iScience (2021) 24(10):103178.
+Emergence of prefrontal neuron maturation properties by training recurrent neural networks in cognitive tasks. Y. H. Liu, J. Zhu, C. Constantinidis, X. Zhou. iScience (2021) 24(10):103178.
 
 
 ## Code DOI
